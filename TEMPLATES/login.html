@@ -1,0 +1,71 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    
+    <link rel="stylesheet"  href={% static "css/logincss.css" %}>
+    
+<body>
+    <header>
+        <nav>
+            <div class="main-logo"><img src={% static "images/main_logo.png" %}></div>
+            <a>Home</a>
+            <a>CRMs</a>
+            <a>My Projects</a>
+            <a class="new-crm-icon"><i class="fa-light fa-file-spreadsheet"></i></a>
+            <a></a>
+            <a></a>
+        </nav>
+    </header>
+    <div class="login-page-main-content">
+        <div class="outer-login">
+            <div class="welcomeback">
+                <div class="login-logo"><img src={% static "images/main_logo.png" %}></div>
+                <div class="texts">
+                    <h1>Welcome</h1>
+                    <h1>Back</h1>
+                </div>
+            </div>
+            <div class="login-form">
+                <div class="texts-login-form">
+                    <h1>Sign In</h1>
+                    <h2>Use suas credenciais</h2>
+                </div>
+
+                <div class="login-input-box">
+                    <div class="input-login">
+                        <input type="text" name="login" id="login">
+                    </div>
+                    <div class="input-senha">
+                        <input type="text" name="login" id="senha">
+                    </div>
+                </div>
+
+                <div class="login-page-buttons">
+                    <button class="join-us-button" type="submit" id="joinus">Join Us</button>
+                    <button class="sign-in-button" type="submit" id="signup">Sign Up</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="skinny-footer-div">
+            <a>© 2022 QQTech - All Rights Reserved</a>
+        </div>
+    </footer>
+
+
+    <script>
+    
+    </script>
+
+    
+</body>
+</html>
