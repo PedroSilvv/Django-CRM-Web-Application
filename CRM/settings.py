@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'Login.apps.LoginConfig',
     'CreateCRM.apps.CreatecrmConfig',
     'registration.apps.RegistrationConfig',
+    'home.apps.HomeConfig',
 ]
 
 MIDDLEWARE = [

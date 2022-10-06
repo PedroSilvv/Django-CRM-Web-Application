@@ -8,5 +8,6 @@ urlpatterns = [
     path('registration/', include('registration.urls')),
     path('createcrm/', include('CreateCRM.urls')),
     path('login/', include('Login.urls')),
+    path('home/', include('homepage.urls')),
     path('admin/', admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
