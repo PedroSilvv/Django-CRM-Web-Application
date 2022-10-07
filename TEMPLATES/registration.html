@@ -36,31 +36,37 @@
                 </div>
 
                 <div class="reg-input-box">
-                    <div class="input-nome">
-                        <input type="text" name="nome" id="nome">
-                    </div>
+                    <form action="{% url 'registration' %}" method="POST" >
 
-                    <div class="input-email">
-                        <input type="text" name="email" id="email">
-                    </div>
+                        {% csrf_token %}
 
-                    <div class="input-matricula">
-                        <input type="text" name="matricula" id="matricula">
-                    </div>
+                        <div class="input-nome">
+                            <input type="text" name="nome" id="nome">
+                        </div>
 
-                    <div class="input-setor">
-                        <input type="text" name="setor" id="setor">
-                    </div>
+                        <div class="input-email">
+                            <input type="text" name="email" id="email">
+                        </div>
 
-                    <div class="input-senha">
-                        <input type="text" name="senha" id="senha">
-                    </div>
+                        <div class="input-matricula">
+                            <input type="text" name="matricula" id="matricula">
+                        </div>
+
+                        <div class="input-setor">
+                            <input type="text" name="setor" id="setor">
+                        </div>
+
+                        <div class="input-senha">
+                            <input type="password" name="senha" id="senha">
+                        </div>
+
+                        <div class="reg-page-buttons">
+                            <button class="create-button" type="submit" id="create">Create</button>
+                        </div>
+                    </form>
 
                 </div>
 
-                <div class="reg-page-buttons">
-                    <button class="create-button" type="submit" id="create">Create</button>
-                </div>
 
             </div>
         </div>
