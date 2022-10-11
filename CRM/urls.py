@@ -5,6 +5,7 @@ from django.conf import settings
 
 
 urlpatterns = [
+    path('crmlist/', include('CRMlist.urls')),
     path('registration/', include('registration.urls')),
     path('createcrm/', include('CreateCRM.urls')),
     path('home/', include('homepage.urls')),
