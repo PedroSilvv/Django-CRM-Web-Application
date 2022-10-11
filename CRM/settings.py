@@ -30,7 +30,7 @@ INSTALLED_APPS = [
     'CreateCRM.apps.CreatecrmConfig',
     'registration.apps.RegistrationConfig',
     'homepage.apps.HomepageConfig',
-    'CRMlist.apps.CRMlistConfig',
+    'CRMlist.apps.CrmlistConfig',
 ]
 
 MIDDLEWARE = [

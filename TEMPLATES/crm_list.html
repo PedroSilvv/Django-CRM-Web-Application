@@ -1,0 +1,66 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista CRMs</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href={% static 'css/style.css' %}>
+</head>
+
+<body>
+    
+    <header>
+        <nav>
+            <div class="main-logo"><img src={% static "images/main_logo.png" %}></div>
+            <a>Home</a>
+            <a>CRMs</a>
+            <a>My Projects</a>
+            <a class="new-crm-icon"><i class="fa-light fa-file-spreadsheet"></i></a>
+            <a></a>
+            <a></a>
+        </nav>
+    </header>
+    
+    <div class="main-content-crm-list">
+        <div class="search-box">
+            <input type="search" id='search-box' placeholder='Buscar CRM ...'>
+        </div>
+        <div class="content-box-crm-list">
+            <div class="title-crm-status">
+                <h3>Em Processo...</h3>
+            </div>
+
+            <div class="crms-list">
+                {% for crm in qts_crm  %}
+                    <div class="crm-box">
+                        <div class='crm-title'><h1>CRM {{crm.id}}</h1></div>
+                        <div class='date-container'>
+                            <div class='crm-date'>
+                                <img src={% static "images/calendar.png" %}>
+                                <a>{{crm.data}}</a>
+                            </div>
+                            <div class='number-person'>
+                                <img src={% static "images/user.png" %}>
+                                <a>{{crm.colaboradores}}</a>
+                            </div>
+                        </div>               
+                    </div>
+                {%endfor%}
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="skinny-footer-div">
+            <a>© 2022 QQTech - All Rights Reserved</a>
+        </div>
+    </footer>
+
+</body>
+</html>

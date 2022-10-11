@@ -35,8 +35,8 @@
     --color-gray-8: #323232;
     --color-gray-9: #191919;
 
-    --font-primary: sans-serif;
-    --font-headings: 'Roboto Slab', serif;
+    --font-primary: 'Inter', sans-serif;
+    --font-headings: 'Inter', sans-serif;
 
     --spacing-gutter-medium: 3rem;
     --spacing-gutter-large: 4rem;
@@ -55,10 +55,10 @@ html {
 }
 
 body {
-    font-size : 1.6rem;
+    font-size : 14px;
     margin : 0;
     box-sizing : border-box;
-    height : 1000px;
+    min-height : 100vh;
     background : #F6F6F6;
 }
 
@@ -84,6 +84,7 @@ nav a{
     display: block;
     padding : 24px 19px;
     height: 70px;
+    font-size: 16px;
 
 }
 
@@ -123,7 +124,6 @@ fieldset {
     border-radius: 10px 10px 10px 10px;
     border: none;
     box-shadow: 0 0 0 0.1rem #D3D3D3;
-    height: 2200px;
 }
 
 .form-tittle-box{
@@ -268,8 +268,6 @@ input::placeholder{
     border-radius: 10px;
     outline: 0;
     margin-top: var(--spacing-gutter-large);
-    position : relative;
-    display:inline-block;
 }
 
 .small-input-con label{
@@ -308,44 +306,304 @@ input[type="date"]{
     font-family: 'Inter', sans-serif;
 }
 
-.crm-dependence-check-box a{
-    color : #A49191;
-    font-size : 16px;
-    font-family : 'Inter', sans-serif;
-    position: absolute;
-    top: 8px;
-    left: 8px;
-    margin-top: 7px;
-    margin-left : 7px
+.login-container{
+    margin-top: 12rem;
+    background-color:purple;
+    height : 297px;
 }
 
-input[type="radio"]{
-    margin-top : 45px;
-    margin-left : 15px;
+.login-box{
+    background-color: white;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: auto;
+    height: 50px;
 }
 
-input[type="radio"] hover{
-    
+/* CSS DA PAGINA DE LOGIN */
+
+.outer-login{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    background: #F6F6F6;
+    width: 100%;
+    height: 297px;
+
 }
 
-.crm-dependence-check-box label{
-    color : #A49191;
-    font-size : 15px;
-    font-family : 'Inter', sans-serif;
-
+.welcomeback, .joinus{
+    position: relative;
+    background-color: white;
+    width: 316px;
+    height: 297px;
+    box-shadow: 0.5px 0.5px 1px 1px #07680E;
 }
 
-.form-button{
-    float: right;
-    margin-right: 10.5rem;
-    margin-top: 7rem;
-    width: 130px;
-    height: 37px;
+.welcomeback h1{
+    color : #07680E;
+    font-family: 'Inter', sans-serif;
+    font-size: 32px;
+    letter-spacing: -1.8px;
+    text-shadow: 0.5px 1px;
+}
+
+.login-form, .reg-form{
+    background-color: white;
+    width: 365px;
+    height: 297px;
+    box-shadow: 0.5px 0.5px 1px 1px #d6d6d6;
+}
+
+.login-logo{
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.login-logo img{
+    width: 122px;
+    height: 123px;
+}
+
+.texts{
+    text-align: center;
+    margin-right: 8px;
+    margin-top: 10px;
+}
+
+
+.texts-login-form{
+    text-align: center;
+    margin-top: 40px;
+}
+
+.texts-login-form h1{
+    font-family: 'Inter', sans-serif;
+    color: #07680E;
+    font-size: 32px;
+    letter-spacing: -1.8px;
+    text-shadow: 0px 1px;
+}
+
+.texts-login-form h2{
+    margin-top: 5px;
+    color: #A49191;
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 200;
+    margin-left: 3px;
+}
+
+.login-input-box{
+    text-align: center;
+    margin: 10px;
+}
+
+.login-input-box input{
+    width: 162px;
+    height: 30px;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    box-shadow: 0 0 0 0.5px #a49191;
+    background: #F6F6F6;
+}
+
+.input-login input{
+    margin: 15px;
+}
+
+.login-page-main-content{
+    margin-top: 12rem;
+    height: 100vh;
+}
+
+.login-page-buttons {
+    margin-top : 25px;
+    text-align: center;
+}
+
+.login-page-buttons button{ 
     border-radius: 15px;
+    width: 90px;
+    height: 25px;
     border: none;
     background: #07680E;
-    font-size: 18px;
     color: white;
-    font-weight: 500;
     font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: -1px;
+}
+
+.join-us-button{
+    float: left;
+    margin-left: 70px;
+}
+
+/* CSS DA PAGINA DE CADASTRO */
+
+.texts-reg{
+    text-align: center;
+    margin-left: -5px;
+    margin-top: 27px;
+}
+
+.texts-reg-form{
+    text-align: center;
+    margin-top: 10px;
+}
+
+.texts-reg-form h1{
+    font-family: 'Inter', sans-serif;
+    color: #07680E;
+    font-size: 32px;
+    letter-spacing: -1.8px;
+    text-shadow: 0px 1px;
+}
+
+.reg-input-box{
+    text-align: center;
+    margin-top: 5px
+}
+
+.reg-input-box input{
+    width: 198px;
+    height: 25px;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    box-shadow: 0 0 0 0.5px #a49191;
+    background: #F6F6F6;
+    margin-top: 10px;
+}
+
+.reg-page-buttons {
+    margin-top : 20px;
+    text-align: center;
+}
+
+.reg-page-buttons button{
+    border-radius: 15px;
+    width: 90px;
+    height: 25px;
+    border: none;
+    background: #07680E;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: -1px;
+    outline: none;
+}
+
+.joinus h1{
+    color : #07680E;
+    font-family: 'Inter', sans-serif;
+    font-size: 32px;
+    letter-spacing: -1.8px;
+    text-shadow: 0.5px 1px;
+}
+
+/* CSS PAGINA CRM_LIST */
+
+.main-content-crm-list{
+    justify-content : center;
+}
+
+.content-box-crm-list{
+    background: white;
+    width: 837px;
+    min-height : 110vh;
+    margin-top: 25px;
+    margin-left:  auto;
+    margin-right: auto;
+    border: solid 0.1px #d6d6d6;
+    border-radius: 20px;
+    margin-bottom: 10rem
+}
+
+.search-box{
+    margin-top: 25px;
+    text-align: center;
+}
+
+input[type="search"]{
+    border-radius: 25px;
+    outline: none;
+    width: 372px;
+    height: 31px;
+    border: solid 0.1px #d6d6d6;
+}
+
+.title-crm-status{
+    width: 141px;
+    height: 35px;
+    background: #07680E;
+    border-radius: 15px;
+    margin: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+.title-crm-status h3{
+    color: white;
+    font-size: 14px;
+    padding-top: 8px;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: -0.8px;
+}
+
+.crms-list{
+    flex-flow: wrap;
+    display: flex;
+    justify-content: space-around;
+}
+
+.crm-box{
+    width: 238px;
+    height: 52px;
+    background: #D3D3D3;
+    border-radius: 20px;
+    margin: 25px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+}
+
+.crm-title h1{
+    font-family: 'Inter', sans-serif;
+    letter-spacing: -0.8px;
+    font-size: 11px;
+    margin-top : 10px;
+    margin-left: 25px;
+    font-weight: 700;
+}
+
+.date-container{
+    margin-top: 7px;
+    display: flex;
+    margin-left: 24px;
+}
+
+.date-container a{
+    font-family : 'Inter', sans-serif;
+    color : #645E5E;
+    font-size : 9px;
+    font-weight: 700;
+}
+
+.number-person{
+    margin-left: 50px;
+}
+
+.crm-date img{
+    height: 12px;
+    width: 12px;
+}
+
+.number-person img{
+    height: 12px;
+    width: 12px;
 }
