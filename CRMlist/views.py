@@ -20,11 +20,26 @@ def create_random_CRM():
 #print(fake.random_number(digits=4))
 #print(fake.date())
 
-def crm_list(request):
+def crm_list_processo(request):
     return render(request, 'crm_list.html', context={
-        'qts_crm' : [create_random_CRM() for _ in range(12)],
+        'qts_crm' : [create_random_CRM() for _ in range(10)],
         'crm' : create_random_CRM(),
+    })
+
+def crm_list_finalizada(request):
+    return render(request, 'crm_list.html', context={
+        'qts_crm' : [create_random_CRM() for i in range(2)],
+        'crm' : create_random_CRM,
+    })
+
+
+def crm_list_pendente(request):
+    return render(request, 'crm_list.html', context={
+        'qts_crm' : [create_random_CRM() for p in range(4)],
+        'crm' : create_random_CRM,
     })
 
 
 
+def crm_detail(request):
+    return render(request, 'crm_detail.html')

@@ -55,7 +55,7 @@ html {
 }
 
 body {
-    font-size : 14px;
+    font-size : 1.6rem;
     margin : 0;
     box-sizing : border-box;
     min-height : 100vh;
@@ -65,6 +65,9 @@ body {
 h1,h2,h3,h4,h5,h6 {
     font-family : var(--font-headings)
 }
+
+
+/* css header */
 
 nav {
     background-color : white;
@@ -90,7 +93,6 @@ nav a{
 
 nav a:hover{
     transition : 0.5s;
-    background-color : white;
     color : #303643;
 }
 
@@ -107,23 +109,60 @@ nav a:hover{
     margin-left: 3rem;
 }
 
+.new-crm-icon1 img{
+    width: 22px;
+    height: 22px
+}
+
+.new-crm-icon2{
+    margin-left: -38px;
+}
+
+.new-crm-icon2 img{
+    width: 14px;
+    height: 14px
+    margin-top: 4px;
+}
+
+/* CSS FOOTER */
+
+.skinny-footer-div{
+    height: 31px;
+    background-color: #fff;
+    box-shadow: 0.1rem 0.1rem  0.1rem 0.1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.skinny-footer-div a{
+    font-family: 'Inter', sans-serif;
+    color: #645E5E;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 17px;
+
+}
+
+/* CSS PAGINA DE CADASTRO CRM */
+
 .main-container{
-    height: 2698px;
     margin-top: 5.5rem;
 }
 
 .form-content{
+    border: solid 0.1px #d6d6d6;
+    min-height: 110vh;
     border-radius: 10px 10px 10px 10px;
     width: 1024px;
     margin-left: auto;
     margin-right: auto;
     background: white;
+    margin-bottom: 10rem;
 }
 
 fieldset {
-    border-radius: 10px 10px 10px 10px;
     border: none;
-    box-shadow: 0 0 0 0.1rem #D3D3D3;
 }
 
 .form-tittle-box{
@@ -163,20 +202,19 @@ fieldset {
     height:34px;
     width: 253px;
     background: #F6F6F6;
-    border: none;
-    box-shadow: 0 0 0 0.5px #a49191;
+    border: solid 1px #A49191;
     border-radius: 10px;
     outline: 0;
     padding: 12px;
 }
 
 .inputs-con{
-    padding-left: 7rem;
-    padding-top: 3.5rem;
+    margin-top: 40px;
+    text-align: center;
 }
 
 input[type="file"]{
-    display: none;
+    padding: 6px;
 }
 
 .setores-con{
@@ -224,50 +262,79 @@ input::placeholder{
     
 }
 
+textarea::placeholder{
+    color: #A49191;
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+}
+
 .tall-input-con{
-    margin-top: 15px;
+    margin-top: 20px;
+}
+
+.tall-input-con textarea{
+    padding: 1rem;
+    outline: none;
+    border: 1px solid rgb(164, 145, 145);
+    border-radius: 10px;
+    background: rgb(246, 246, 246);
     width: 861px;
     height: 579px;
-    position: relative;
-}
-
-.tall-input-con input{
-    background: #F6F6F6;
-    border: none;
-    box-shadow: 0 0 0 0.5px #a49191;
-    border-radius: 10px;
-    outline: 0;
-    width: 851px;
-    height: 582px;
-}
-
-.skinny-footer-div{
-    height: 31px;
-    background-color: #fff;
-    box-shadow: 0.1rem 0.1rem  0.1rem 0.1rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.skinny-footer-div a{
-    font-family: 'Inter', sans-serif;
-    color: #645E5E;
     font-size: 14px;
-    font-weight: 400;
-    line-height: 17px;
-
+    font-family: font-family: 'Inter', sans-serif;;
 }
 
 .crm-dependence-check-box{
-    width: 328px;
+    width: 368px;
     height: 90px;
     background: #F6F6F6;
-    border: none;
-    box-shadow: 0 0 0 0.5px #a49191;
+    border: solid 1px #a49191;
     border-radius: 10px;
     outline: 0;
-    margin-top: var(--spacing-gutter-large);
+    margin-left: 8rem;
+    margin-top: 4rem;
+    text-align: -webkit-left;
+}
+
+.crm-dependence-check-box h3{
+    font-family: 'Inter', sans-serif;
+    color: #A49191;
+    font-size: 14px;
+    margin-top: 15px;
+    margin-left: 15px;
+}
+
+.crm-dependence-check-box input{
+    margin-left: 15px;
+}
+
+.crm-dependence-check-box label{
+    font-family: 'Inter', sans-serif;
+    color: #A49191;
+    font-size: 14px;
+}
+
+.org-div{
+    display: flex;
+    justify-content: space-between;
+}
+
+.solicitation-button{
+    margin-top: 90px;
+    margin-left: 290px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.solicitation-button button{
+    background: #07680E;
+    border: none;
+    width: 140px;
+    height: 35px;
+    border-radius: 15px;
+    font-family:'Inter', sans-serif;
+    color: white;
+    font-size:18px
 }
 
 .small-input-con label{
@@ -306,6 +373,8 @@ input[type="date"]{
     font-family: 'Inter', sans-serif;
 }
 
+/* CSS DA PAGINA DE LOGIN */
+
 .login-container{
     margin-top: 12rem;
     background-color:purple;
@@ -319,8 +388,6 @@ input[type="date"]{
     margin-bottom: auto;
     height: 50px;
 }
-
-/* CSS DA PAGINA DE LOGIN */
 
 .outer-login{
     align-items: center;
@@ -442,7 +509,55 @@ input[type="date"]{
     margin-left: 70px;
 }
 
+.login::placeholder{
+    padding-left:10px;
+}
+
+.senha::placeholder{
+    padding-left:10px;
+}
+
+@media (max-width : 720px){
+    .outer-login{
+    align-items: center;
+    justify-content: center;
+    background: #F6F6F6;
+    width: 100%;
+    display:grid;
+    }
+
+    .welcomeback{
+        width: 365px;
+    }
+}
+
+@media (min-width : 373px) and (max-width : 451px){
+    nav a{
+        font-size: 12px;
+    }
+
+    .main-logo img{
+        width: 31px;
+        height: 31px;
+        margin-top: 0.9rem;
+        margin-left: 3rem
+    }
+
+    .login-form{
+        width: 250px;
+        margin: 0 auto;
+    }
+    
+    
+    .welcomeback{
+        width: 250px;
+        margin: 0 auto;
+    }
+
+}
+
 /* CSS DA PAGINA DE CADASTRO */
+
 
 .texts-reg{
     text-align: center;
@@ -506,6 +621,18 @@ input[type="date"]{
     text-shadow: 0.5px 1px;
 }
 
+.input-cadastro input{
+    padding-left:10px;
+}
+
+.input-cadastro input::placeholder{
+    margin-left:10px;
+}
+
+form::placeholder{
+    padding-left:10px;
+}
+
 /* CSS PAGINA CRM_LIST */
 
 .main-content-crm-list{
@@ -529,15 +656,10 @@ input[type="date"]{
     text-align: center;
 }
 
-input[type="search"]{
-    border-radius: 25px;
-    outline: none;
-    width: 372px;
-    height: 31px;
-    border: solid 0.1px #d6d6d6;
-}
 
 .title-crm-status{
+    position: relative;
+    display: flex;
     width: 141px;
     height: 35px;
     background: #07680E;
@@ -550,11 +672,19 @@ input[type="search"]{
 }
 
 .title-crm-status h3{
+    margin-left: 15px;
     color: white;
     font-size: 14px;
     padding-top: 8px;
     font-family: 'Inter', sans-serif;
-    letter-spacing: -0.8px;
+    letter-spacing: -0.8px
+}
+
+.title-crm-status img{
+    height: 15px;
+    width: 15px;
+    margin-left: 10px;
+    margin-top: 9px;
 }
 
 .crms-list{
@@ -570,6 +700,12 @@ input[type="search"]{
     border-radius: 20px;
     margin: 25px;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+    transition: all 300ms ease-in-out;
+    transform: scale(1);
+}
+
+.crm-box:hover{
+    transform : scale(1.1);
 }
 
 .crm-title h1{
@@ -607,3 +743,311 @@ input[type="search"]{
     height: 12px;
     width: 12px;
 }
+
+.search-input,
+.search-button {
+    border: none;
+    background: none;
+    outline: none;
+}
+
+.search-input{
+    width: 100%;
+    padding: 7px;
+    padding-right: 30px;
+}
+
+.search-button{
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 7px;
+}
+
+.search-form{
+    position: relative;
+    border-radius: 25px;
+    width: 372px;
+    height: 31px;
+    border: solid 0.1px #d6d6d6;
+    margin: 0 auto;
+    background: white;
+}
+
+.search-button img{
+    width: 16px;
+    height: 16px
+}
+
+.drop-menu{
+    display: block;
+    position: absolute;
+    top: 100%;
+    background: #07680E;
+    border-radius: 15px;
+    width: 141px;
+}
+
+.drop-menu{
+    display: none;
+}
+
+.title-crm-status:hover .drop-menu{
+    display: block;
+    text-align: center;
+}
+
+
+.title-crm-status:hover .drop-menu ul li{
+    list-style-type: none;
+    float: left;
+    margin-bottom: 10px;
+}
+
+.title-crm-status a{
+    margin-left: 13px;
+    color: white;
+    font-size: 13px;
+    padding-top: 8px;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: -0.8px;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+
+.drop-menu a:hover {
+    font-size: 14px;
+}
+
+@media (max-width : 860px){
+    .content-box-crm-list{
+        width:600px;
+    }
+}
+
+@media (min-width : 420px) and (max-width : 630px){
+    .content-box-crm-list{
+        width:400px;
+    }
+}
+
+
+@media (min-width : 300px) and (max-width : 420px){
+    .content-box-crm-list{
+        width:300px;
+    }
+
+    .search-form{
+        width:250px;
+    }
+}
+
+
+
+
+/* CSS PAGINA CRM DETAILS */
+
+main-container-crmdetail{
+    justify-content: center;
+}
+
+.content-box-crmdetail{
+    background: white;
+    width: 1134px;
+    margin-top: 81px;
+    min-height: 110vh;
+    border: solid 0.1px #d6d6d6;
+    border-radius: 10px;
+    margin-bottom: 20rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.crmdetail-title-box{
+    width: 167px;
+    height: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #07680E;
+    border-radius: 20px;
+    margin-top: 4rem;
+}
+
+.crmdetail-title-box h3{
+    font-family: 'Inter', sans-serif;
+    width: 95px;
+    height: 22.5px;
+    padding-top: 7px;
+    color: white;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    margin-left: auto;
+    margin-right: auto;
+    font-style: normal;
+    letter-spacing: -0.018em;
+}
+
+.all-details-container{
+    padding-top: 40px;
+}
+
+.short-details-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+
+.short-detail{
+    margin-top: 40px;
+    margin-right: 6rem;
+    margin-left: 6rem;
+    background: purple;
+    width: 324px;
+    height: 104px;
+    border: solid 1px #d3d3d3;
+    background: #f6f6f6;
+    border-radius: 20px;
+}
+
+.short-detail h3{
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    color: #07680E;
+    letter-spacing: -0.02em;
+    margin: 20px;
+
+}
+
+.short-detail h4, .tall-detail h4{
+    font-size: 12px;
+    color: #645E5E;
+    margin: 20px;
+}
+
+.tall-details-container{
+    padding-top:30px
+}
+
+.tall-detail{
+    width: 90%;
+    min-height: 556px;
+    background: purple;
+    margin: auto;
+    border-radius: 20px;
+    border: solid 1px #d3d3d3;
+    background: #f6f6f6;
+    margin-bottom: 30px;
+}
+
+.tall-detail h3{
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    color: #07680E;
+    letter-spacing: -0.02em;
+    margin: 20px;
+}
+
+.setores-detail-container{
+    display:flex;
+    justify-content:space-between;
+}
+
+.setores-detail{
+    margin-left: 60px;
+    width: 474px;
+    min-height: 286px;
+    border-radius: 20px;
+    border: solid 1px #d3d3d3;
+    background: #f6f6f6;
+    margin-bottom: 8rem;
+}
+
+.crm-detail-buttons{
+    display: flex;
+    margin-right:20px;
+}
+
+.crm-detail-buttons button{
+    margin-left: 25px;
+    margin-top: 24rem;
+    height: 40px;
+    width: 137px;
+    border-radius: 20px;
+    border: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: white;
+    font-weight: 600;
+}
+
+
+.arquivar-button{
+    background:#EA2D3F;
+}
+
+.editar-button, .versao-button{
+    background:#07680E;
+}
+
+.chave{
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+}
+
+.setores{
+
+}
+
+.setores img{
+    height: 20px;
+    width: 20px;
+}
+
+.setores h3{
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    color: #07680E;
+    letter-spacing: -0.02em;
+}
+
+.colaboradores{
+    margin-right: 7rem;
+}
+
+.colaboradores img{
+    height: 20px;
+    width: 20px;
+}
+
+.colaboradores h3{
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    color: #07680E;
+    letter-spacing: -0.02em;
+}
+
+.valor{
+    margin: 20px;
+    display:flex;
+    justify-content: space-between;
+}
+
+.setor {
+}
+
+.colaborador{
+    margin-right: 15rem;
+}
+
+.setor h3, .colaborador h3{
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #645E5E;
+    letter-spacing: -0.02em;
+}
+

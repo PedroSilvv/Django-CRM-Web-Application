@@ -5,6 +5,6 @@ from django.contrib.auth import authenticate
 from django.contrib.auth import login as login_crm
 from django.contrib.auth.decorators import login_required
 
-@login_required(login_url='')
+@login_required(login_url='login/')
 def homepage(request):
     return render(request, 'home.html')

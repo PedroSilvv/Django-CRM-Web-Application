@@ -8,14 +8,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro</title>
     
-    <link rel="stylesheet"  href={% static "css/logincss.css" %}>
+    <link rel="stylesheet"  href={% static "css/style.css" %}>
     
 <body>
     <header>
         <nav>
             <div class="main-logo"><img src={% static "images/main_logo.png" %}></div>
-            <a>Home</a>
-            <a>CRMs</a>
+            <a href={% url 'login' %}>Home</a>
+            <a href={% url 'login' %}>CRMs</a>
             <a>My Projects</a>
             <a class="new-crm-icon"><i class="fa-light fa-file-spreadsheet"></i></a>
             <a></a>
@@ -40,24 +40,24 @@
 
                         {% csrf_token %}
 
-                        <div class="input-nome">
-                            <input type="text" name="nome" id="nome">
+                        <div class="input-cadastro">
+                            <input type="text" name="nome" id="nome" placeholder="nome">
                         </div>
 
-                        <div class="input-email">
-                            <input type="text" name="email" id="email">
+                        <div class="input-cadastro">
+                            <input type="text" name="email" id="email" placeholder="email">
                         </div>
 
-                        <div class="input-matricula">
-                            <input type="text" name="matricula" id="matricula">
+                        <div class="input-cadastro">
+                            <input type="text" name="matricula" id="matricula" placeholder="matricula">
                         </div>
 
-                        <div class="input-setor">
-                            <input type="text" name="setor" id="setor">
+                        <div class="input-cadastro">
+                            <input type="text" name="setor" id="setor" placeholder="setor">
                         </div>
 
-                        <div class="input-senha">
-                            <input type="password" name="senha" id="senha">
+                        <div class="input-cadastro">
+                            <input type="password" name="senha" id="senha" placeholder="senha">
                         </div>
 
                         <div class="reg-page-buttons">

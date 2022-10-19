@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     
-    <link rel="stylesheet"  href={% static "css/logincss.css" %}>
+    <link rel="stylesheet"  href={% static "css/style.css" %}>
     
 <body>
     <header>
@@ -43,10 +43,10 @@
 
                     <div class="login-input-box">
                         <div class="input-login">
-                            <input type="text" name="matricula" id="matricula">
+                            <input class='login' type="text" name="matricula" id="matricula" placeholder="Matricula">
                         </div>
                         <div class="input-senha">
-                            <input type="password" name="senha" id="senha">
+                            <input class='senha 'type="password" name="senha" id="senha"  placeholder="Senha">
                         </div>
                     </div>
 
@@ -59,6 +59,8 @@
             </div>
         </div>
     </div>
+
+
 
     <footer>
         <div class="skinny-footer-div">

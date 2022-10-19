@@ -1,0 +1,115 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRM QQTECH</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href={% static 'css/style.css' %}>
+</head>
+
+<body>
+    
+    <header>
+        <nav>
+            <div class="main-logo"><img src={% static "images/main_logo.png" %}></div>
+            <a href={% url 'homepage' %}>Home</a>
+            <a href={% url 'crmlist' %}>CRMs</a>
+            <a href={% url 'crmlist' %}>My Projects</a>
+            <a class="new-crm-icon"></a>
+            <a></a>
+            <a></a>
+        </nav>
+    </header>
+    
+    <div class="main-container">
+        <div class="form-content">
+            <div class="form-tittle-box" >
+                <h3>Solicitação</h3>
+            </div>
+
+            <form action='#' method="post" enctype="multipart/form-data">
+
+                {% csrf_token %}
+
+                <fieldset>
+                    <div class="inputs-con">
+                        <div class="small-input-con">
+                            <input type='text' name="solicitante" id="solicitante" class="small-input">
+                            <label for="solicitante">Solicitante</label>
+                        </div>
+
+                        <div class="small-input-con">
+                            <input type='date' name="data" id="data" class="small-input">
+                            <label for="data"></label>
+                        </div>
+
+                        <div class="small-input-con">
+                            <input type='text' name="empresa" id="empresa" class="small-input">
+                            <label for="empresa">Empresa</label>
+                        </div>
+
+                        <div class="small-input-con">
+                            <input type='text' name="versao" id="versao" class="small-input">
+                            <label for="versao">Versão CRM</label>
+                        </div>
+
+                        <div class="small-input-con">
+                            <input type='file' name="upload" id="upload" class="small-input" multiple="multiple">
+                            <label for="upload"></label>
+                        </div>
+
+                        <div class="small-input-con">
+                            <input type='text' name="setores" id="setores" class="small-input">
+                            <label for="setores">Setores</label>
+                        </div>
+
+                        <div class="tall-input-con">
+                            <textarea type='text' name="descricao" id="descricao" placeholder="Descrição"></textarea>
+                        </div>
+
+                        <div class="tall-input-con">
+                            <textarea type='text' name="justificativa" id="justificativa" placeholder="Justificativa"> </textarea>
+                        </div>
+
+                        <div class="tall-input-con">
+                            <textarea type='text' name="objetivo" id="objetivo" placeholder="Objetivo"> </textarea>
+                        </div>
+                        
+
+                        <div class='org-div'>
+                            <div class="crm-dependence-check-box">
+                                <h3>Essa CRM depende de outro desenvolvimento?</h3>
+                                <br>
+                    
+                                <input type="radio" name="sim" id="dependence-button-sim" placeholder="Sim">
+                                <label for="button1">Sim</label>
+                                
+                                <input type="radio" name="não" id="dependence-button-nao" placeholder="Não">
+                                <label for="button2">Não</label>
+                            </div>
+                            <div class="solicitation-button">
+                                <button class="form-button" type="submit" id="solict-button">Solicitar</button>
+                            </div>
+                        <div/>
+
+                </fieldset>
+
+            </form>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="skinny-footer-div">
+            <a>© 2022 QQTech - All Rights Reserved</a>
+        </div>
+    </footer>
+
+
+</body>
+</html>

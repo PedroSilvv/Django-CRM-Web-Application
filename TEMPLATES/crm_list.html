@@ -7,6 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista CRMs</title>
 
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -18,9 +22,9 @@
     <header>
         <nav>
             <div class="main-logo"><img src={% static "images/main_logo.png" %}></div>
-            <a>Home</a>
-            <a>CRMs</a>
-            <a>My Projects</a>
+            <a href={% url 'homepage' %}>Home</a>
+            <a href={% url 'crmlist' %}>CRMs</a>
+            <a href={% url 'crmlist' %}>My Projects</a>
             <a class="new-crm-icon"><i class="fa-light fa-file-spreadsheet"></i></a>
             <a></a>
             <a></a>
@@ -29,11 +33,23 @@
     
     <div class="main-content-crm-list">
         <div class="search-box">
-            <input type="search" id='search-box' placeholder='Buscar CRM ...'>
+            <form action="" class="search-form">
+                <input type="search" id='search' class="search-input" placeholder='Buscar CRM ...'>
+                <button type="submit" class="search-button"><img src={% static "images/search_icon.png" %}></button>
+            </form>
         </div>
         <div class="content-box-crm-list">
             <div class="title-crm-status">
                 <h3>Em Processo...</h3>
+                <img src={% static 'images/caret_down.png' %}>
+                <div class="drop-menu">
+                    <ul>
+                        <li><a href={% url 'crmlist' %}>Em Processo</a></li>
+                        <li><a href={% url 'crmlist-finalizadas' %}>Finalizadas</a></li>
+                        <li><a href={% url 'crmlist-pendentes' %}>Pendentes</a></li>
+                    </ul>
+                </div>
+                    
             </div>
 
             <div class="crms-list">

@@ -1,0 +1,129 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRM QQTECH</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href={% static 'css/style.css' %}>
+</head>
+
+<body>
+    
+    <header>
+        <nav>
+            <div class="main-logo"><img src={% static "images/main_logo.png" %}></div>
+            <a href={% url 'homepage' %}>Home</a>
+            <a href={% url 'crmlist' %}>CRMs</a>
+            <a href={% url 'crmlist' %}>My Projects</a>
+            <a class="new-crm-icon"></a>
+            <a></a>
+            <a></a>
+        </nav>
+    </header>
+    
+    <div class="main-container-crmdetail">
+        <div class='content-box-crmdetail'>
+            <div class="crmdetail-title-box">
+                <h3>CRM 0000</h3>
+            </div>
+            <div class="all-details-container">
+                <div class="short-details-container">
+                    <div class="short-detail">
+                        <h3>Solicitante</h3>
+                        <h4>Peter Henrique/980133</h4>
+                    </div>
+
+                    <div class="short-detail">
+                        <h3>Empresa</h3>
+                        <h4>Quero Quero S.A</h4>
+                    </div>
+
+                    <div class="short-detail">
+                        <h3>Versão CRM</h3>
+                        <h4>v1</h4>
+                    </div>
+
+                    <div class="short-detail">
+                        <h3>Setores</h3>
+                        <h4>Setor 1, Setor 2</h4>
+                    </div>
+
+                    <div class="short-detail">
+                        <h3>Data</h3>
+                        <h4>20/08/2022</h4>
+                    </div>
+
+                    <div class="short-detail">
+                        <h3>Essa CRM depende de outro Desenvolvimento?</h3>
+                        <h4>Não</h4>
+                    </div>
+
+                </div>
+
+                <div class="tall-details-container">
+                    <div class="tall-detail">
+                        <h3>Descrição</h3>
+                        <h4>{% lorem 9 b random %}</h4>
+                        <h4>{% lorem 9 b random %}</h4>
+                    </div>
+
+                    <div class="tall-detail">
+                        <h3>Justificativa</h3>
+                        <h4>{% lorem 9 b random %}</h4>
+                    </div>
+
+                    <div class="tall-detail">
+                        <h3>Objetivo</h3>
+                        <h4>{% lorem 9 b random %}</h4>
+                    </div>
+                </div>
+
+                <div class="setores-detail-container">
+                    <div class="setores-detail">
+                        <div class="chave">
+                            <div class='setores'>
+                                <h3> <img src={% static 'images/user.png' %}> Setores</h3>
+                            </div>
+                            
+                            <div class='colaboradores'>
+                                <h3> <img src={% static 'images/user.png' %}> Colaboradores</h3>
+                            </div>
+                        </div>
+
+                        <div class="valor">
+                            <div class='setor'>
+                                <h3>Setor 1</h3>
+                            </div>
+
+                            <div class='colaborador'>
+                                <h3>Allan C.</h3>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div class="crm-detail-buttons">
+                        <button class='arquivar-button' type="submit">Arquivar CRM</button>
+                        <button class='editar-button'   type="submit">Editar</button>
+                        <button class='versao-button' type="submit">Versões Anteriores</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="skinny-footer-div">
+            <a>© 2022 QQTech - All Rights Reserved</a>
+        </div>
+    </footer>
+</body>
+</html>
