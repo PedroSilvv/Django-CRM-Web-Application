@@ -1,3 +1,8 @@
 from django.contrib import admin
+from .models import Create_CRM
 
-# Register your models here.
+
+class CreateCRMAdmin(admin.ModelAdmin):
+    list_display = ("id", "data", "empresa")
+
+admin.site.register(Create_CRM)

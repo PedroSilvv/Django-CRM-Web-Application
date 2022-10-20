@@ -9,10 +9,10 @@ def login(request):
         return render(request, 'login.html')
 
     else:
-        username = request.POST.get('matricula')
+        matricula = request.POST.get('matricula')
         senha = request.POST.get('senha')
 
-        user = authenticate(username=username, password=senha)
+        user = authenticate(username=matricula, password=senha)
 
         if user:
             login_crm(request, user)

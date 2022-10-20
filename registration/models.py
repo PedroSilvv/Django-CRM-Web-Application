@@ -21,5 +21,5 @@ class CustomUser(AbstractUser):
     setor = models.ForeignKey(Setor, on_delete=models.CASCADE, default=1)
 
     def __str__(self):
-        return self.username
+        return self.first_name
 
