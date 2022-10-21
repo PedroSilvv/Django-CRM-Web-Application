@@ -1,4 +1,5 @@
 from distutils.command.upload import upload
+from email.policy import default
 from random import choices
 from django.db import models
 from registration.models import CustomUser, Setor

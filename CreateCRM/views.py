@@ -12,16 +12,23 @@ from registration.models import CustomUser, Setor
 @login_required(login_url='/')
 def createcrm(request):
 
-    crm = Create_CRM.objects.filter(
-        solicitante=request.user
-    ).first()
+    if request.method == "GET":
+        return render(request, 'createcrm.html')
+    else:
+        solicitante = request.user
+        data = request.POST.get('data')
+        empresa = request.POST.get('empresa')
+        versao = request.POST.get('versao')
+        file = request.POST.get('upload')
+        descricao = request.POST.get('descricao')
+        justificativa = request.POST.get('justificativa')
+        objetivo = request.POST.get('objetivo')
 
-    form = CreateCRMForm(
-        data = request.POST or None,
-        instance=crm
-    )
+        crm = Create_CRM.objects.create(solicitante=solicitante, data_criacao=data, empresa=empresa, versao=versao, file=file,
+        descricao=descricao, justificativa=justificativa, objetivo=objetivo)
 
-    return render(request, 'createcrm.html', context={
-        'form' : form})
+        crm.save()
 
+        return render(request, 'home.html')
 
+        
