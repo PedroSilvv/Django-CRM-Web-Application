@@ -4,6 +4,7 @@ from django.http import HttpResponse
 import random
 from unicodedata import digit
 from faker import Faker
+from CreateCRM.models import Create_CRM
 
 fake = Faker()
 
@@ -22,8 +23,8 @@ def create_random_CRM():
 
 def crm_list_processo(request):
     return render(request, 'crm_list.html', context={
-        'qts_crm' : [create_random_CRM() for _ in range(10)],
-        'crm' : create_random_CRM(),
+        'qts_crm' : Create_CRM.objects.all(),
+        'crm' : Create_CRM.objects,
     })
 
 def crm_list_finalizada(request):
