@@ -44,3 +44,6 @@ def crm_list_pendente(request):
 
 def crm_detail(request):
     return render(request, 'crm_detail.html')
+
+
+

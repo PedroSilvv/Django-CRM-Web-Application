@@ -32,3 +32,12 @@ def createcrm(request):
         return render(request, 'home.html')
 
         
+print("teste")
+print("teste")
+print("teste")
+print("teste")
+print("teste")
+print("teste")
+print("teste")
+print("teste")
+print("teste")
