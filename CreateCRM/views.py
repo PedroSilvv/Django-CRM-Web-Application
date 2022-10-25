@@ -1,3 +1,4 @@
+from audioop import add
 from tkinter import N
 from django.shortcuts import render
 from django.http import HttpResponse            
@@ -13,13 +14,17 @@ from registration.models import CustomUser, Setor
 def createcrm(request):
 
     if request.method == "GET":
-        return render(request, 'createcrm.html')
+        return render(request, 'createcrm.html', context={
+            "setores" : Setor.objects.values('nome'),
+            'setor' : Setor.objects
+        })
     else:
         solicitante = request.user
         data = request.POST.get('data')
         empresa = request.POST.get('empresa')
         versao = request.POST.get('versao')
         file = request.FILES.get('upload')
+        setores = (request.POST.get('setor'))
         descricao = request.POST.get('descricao')
         justificativa = request.POST.get('justificativa')
         objetivo = request.POST.get('objetivo')

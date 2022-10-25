@@ -6,16 +6,22 @@ from .models import CustomUser, Setor
 
 def registration(request):
     if request.method == "GET":
-        return render(request, 'registration.html')
+        return render(request, 'registration.html', context={
+            "setores" : Setor.objects.values('nome'),
+            'setor' : Setor.objects
+        })
+
     else:
         nome = request.POST.get("nome")
         email = request.POST.get("email")    
         matricula = request.POST.get("matricula")
-        setor = request.POST.get("setor")
+        setor = request.POST.get("setores")
         senha = request.POST.get("senha")
     
         user = CustomUser.objects.create_user(username=matricula, email=email,
         password=senha, first_name=nome)
+        
+        user.setor
 
         user.save()
 

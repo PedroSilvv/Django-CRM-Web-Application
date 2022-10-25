@@ -64,8 +64,10 @@
                         </div>
 
                         <div class="small-input-con">
-                            <input type='text' name="setores" id="setores" class="small-input">
-                            <label for="setores">Setores</label>
+                            <select name='setores' id="setores" multiple>
+                                {%for setor in setores%}
+                                    <option value="setor">{{setor.nome}}</option>
+                                {%endfor%}
                         </div>
 
                         <div class="tall-input-con">

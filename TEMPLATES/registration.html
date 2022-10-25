@@ -53,7 +53,10 @@
                         </div>
 
                         <div class="input-cadastro">
-                            <input type="text" name="setor" id="setor" placeholder="setor">
+                            <select name='setores' id="setores" >
+                                {%for setor in setores%}
+                                    <option value="setor">{{setor.nome}}</option>
+                                {%endfor%}
                         </div>
 
                         <div class="input-cadastro">
