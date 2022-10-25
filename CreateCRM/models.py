@@ -5,6 +5,7 @@ from django.db import models
 from registration.models import CustomUser, Setor
 from unittest.util import _MAX_LENGTH
 
+
 class Create_CRM(models.Model):
 
     STATUS = (

@@ -14,7 +14,9 @@ def registration(request):
         setor = request.POST.get("setor")
         senha = request.POST.get("senha")
     
-        user = CustomUser.objects.create_user(username=matricula, email=email, password=senha, first_name=nome)
+        user = CustomUser.objects.create_user(username=matricula, email=email,
+        password=senha, first_name=nome)
+
         user.save()
 
         return render(request, 'home.html')

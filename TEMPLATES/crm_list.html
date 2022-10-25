@@ -23,8 +23,8 @@
         <nav>
             <div class="main-logo"><img src={% static "images/main_logo.png" %}></div>
             <a href={% url 'homepage' %}>Home</a>
-            <a href={% url 'crmlist' %}>CRMs</a>
-            <a href={% url 'crmlist' %}>My Projects</a>
+            <a href={% url 'crmlist-processo' %}>CRMs</a>
+            <a href={% url 'crmlist-processo' %}>My Projects</a>
             <a class='new-crm-icon1' href='{% url 'createcrm'%}'><img src={% static "images/prancheta.png" %}></a>
             <a class='new-crm-icon2' href='{% url 'createcrm'%}'><img src={% static "images/mais.png" %}></a>
             
@@ -40,11 +40,18 @@
         </div>
         <div class="content-box-crm-list">
             <div class="title-crm-status">
-                <h3>Em Processo...</h3>
+                {%if status_crm == 'processo'%}
+                    <h3>Em Processo...</h3>
+                {%elif status_crm == 'finalizada'%}
+                    <h3>Finalizadas...</h3>
+                {%else%}
+                    <h3>Pendentes...</h3>
+                {%endif%}
+
                 <img src={% static 'images/caret_down.png' %}>
                 <div class="drop-menu">
                     <ul>
-                        <li><a href={% url 'crmlist' %}>Em Processo</a></li>
+                        <li><a href={% url 'crmlist-processo' %}>Em Processo</a></li>
                         <li><a href={% url 'crmlist-finalizadas' %}>Finalizadas</a></li>
                         <li><a href={% url 'crmlist-pendentes' %}>Pendentes</a></li>
                     </ul>
@@ -59,14 +66,16 @@
                         <div class='date-container'>
                             <div class='crm-date'>
                                 <img src={% static "images/calendar.png" %}>
-                                <a>{{crm.data_criacao}}</a>
+                                <a href={% url 'crm-detail' crm.id %}>{{crm.data_criacao}}</a>
                             </div>
                             <div class='number-person'>
                                 <img src={% static "images/user.png" %}>
-                                <a>{{crm.solicitante}}</a>
+                                <a href={% url 'crm-detail' crm.id %}>{{crm.solicitante}}</a>
                             </div>
                         </div>               
                     </div>
+                {%empty%}
+                    <div class='empty-alert'><a>Nenhuma CRM disponivel<a/></div>
                 {%endfor%}
             </div>
         </div>

@@ -717,6 +717,8 @@ form::placeholder{
     font-weight: 700;
 }
 
+
+
 .date-container{
     margin-top: 7px;
     display: flex;
@@ -728,6 +730,7 @@ form::placeholder{
     color : #645E5E;
     font-size : 9px;
     font-weight: 700;
+    text-decoration: none;
 }
 
 .number-person{
@@ -820,6 +823,15 @@ form::placeholder{
     font-size: 14px;
 }
 
+.empty-alert {
+    font-size: 20px;
+    margin: 0 auto;
+}
+
+.empty-alert a {
+    color: #e7e1e1;
+}
+
 @media (max-width : 860px){
     .content-box-crm-list{
         width:600px;
@@ -865,6 +877,7 @@ main-container-crmdetail{
 }
 
 .crmdetail-title-box{
+    text-align: center;
     width: 167px;
     height: 40px;
     margin-left: auto;
@@ -876,15 +889,11 @@ main-container-crmdetail{
 
 .crmdetail-title-box h3{
     font-family: 'Inter', sans-serif;
-    width: 95px;
-    height: 22.5px;
     padding-top: 7px;
     color: white;
     font-weight: 600;
     font-size: 20px;
     line-height: 24px;
-    margin-left: auto;
-    margin-right: auto;
     font-style: normal;
     letter-spacing: -0.018em;
 }
