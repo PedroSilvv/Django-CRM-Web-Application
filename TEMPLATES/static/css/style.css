@@ -418,7 +418,7 @@ input[type="date"]{
 .login-form, .reg-form{
     background-color: white;
     width: 365px;
-    height: 297px;
+    min-height: 297px;
     box-shadow: 0.5px 0.5px 1px 1px #d6d6d6;
 }
 
@@ -583,7 +583,7 @@ input[type="date"]{
     margin-top: 5px
 }
 
-.reg-input-box input{
+.reg-input-box input, select{
     width: 198px;
     height: 25px;
     border-radius: 10px;
@@ -592,6 +592,10 @@ input[type="date"]{
     box-shadow: 0 0 0 0.5px #a49191;
     background: #F6F6F6;
     margin-top: 10px;
+}
+
+.reg-input-box select{
+    padding-left : 7px;
 }
 
 .reg-page-buttons {
@@ -621,7 +625,7 @@ input[type="date"]{
     text-shadow: 0.5px 1px;
 }
 
-.input-cadastro input{
+.input-cadastro input, select{
     padding-left:10px;
 }
 

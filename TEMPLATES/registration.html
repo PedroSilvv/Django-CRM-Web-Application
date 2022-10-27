@@ -55,8 +55,9 @@
                         <div class="input-cadastro">
                             <select name='setores' id="setores" >
                                 {%for setor in setores%}
-                                    <option value="setor">{{setor.nome}}</option>
+                                    <option value="setor" name='setor' id='setor'>{{setor.nome}}</option>
                                 {%endfor%}
+                            </select>
                         </div>
 
                         <div class="input-cadastro">

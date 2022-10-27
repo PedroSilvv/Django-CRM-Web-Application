@@ -5,10 +5,10 @@ from django.http import HttpResponse
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as login_crm
 from django.contrib.auth.decorators import login_required
-
 from CreateCRM.forms import CreateCRMForm
 from .models import Create_CRM
 from registration.models import CustomUser, Setor
+from .models import FormCRM
 
 @login_required(login_url='/')
 def createcrm(request):
@@ -38,15 +38,9 @@ def createcrm(request):
 
 
 
-print("teste")
-print("teste")
-print("teste")
-print("teste")
-print("teste")
-print("teste")
-print("teste")
-print("teste")
-print("teste")
-print("teste")
-print("teste")
+
         
+
+def teste_form(request):
+    form = FormCRM()
+    return render(request, 'createcrm.html', {'form' : form})

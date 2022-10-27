@@ -1,4 +1,5 @@
 from multiprocessing import context
+from winreg import CreateKeyEx
 from django.shortcuts import render
 from django.http import HttpResponse
 import random
@@ -46,9 +47,12 @@ def crm_list_pendente(request):
 
 @login_required(login_url='/')
 def crm_detail(request, crm_id):
+
     crm = Create_CRM.objects.get(id=crm_id)
+
     return render(request, 'crm_detail.html', {
-        'crm' : crm
+        'crm' : crm,
+        'setores' : crm.setor.all()        
     })
 
 
