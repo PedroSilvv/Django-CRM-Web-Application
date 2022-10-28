@@ -35,3 +35,6 @@ class Create_CRM(models.Model):
 
     def __str__(self):
         return f'CRM - {self.id}'
+
+
+

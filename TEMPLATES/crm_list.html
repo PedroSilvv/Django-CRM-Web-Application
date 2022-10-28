@@ -33,8 +33,9 @@
     
     <div class="main-content-crm-list">
         <div class="search-box">
-            <form action="" class="search-form">
-                <input type="search" id='search' class="search-input" placeholder='Buscar CRM ...'>
+            <form action="{% url 'search' %}" class="search-form">
+                <input type="search" id='search' class="search-input" placeholder='Buscar CRM ...' name=termo
+                value="{{request.GET.termo}}">
                 <button type="submit" class="search-button"><img src={% static "images/search_icon.png" %}></button>
             </form>
         </div>

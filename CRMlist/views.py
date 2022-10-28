@@ -25,7 +25,7 @@ def create_random_CRM():
 
 
 @login_required(login_url='/')
-def crm_list_processo(request):
+def crm_list_processo(request):    
     return render(request, 'crm_list.html', context={
         'qts_crm' : Create_CRM.objects.all(),
         'crm' : Create_CRM.objects,
@@ -55,5 +55,14 @@ def crm_detail(request, crm_id):
         'setores' : crm.setor.all()        
     })
 
+def busca(request):
+    termo = request.GET.get("termo")
+    qts_crm = Create_CRM.objects.order_by('-id').filter(
+        id=termo,
+    )
 
+    return render(request, 'busca.html', context={
+        'qts_crm' : qts_crm,
+        'status_crm' : 'processo'
+    })
 

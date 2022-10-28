@@ -7,5 +7,6 @@ urlpatterns = [
     path('finalizadas/', views.crm_list_finalizada, name='crmlist-finalizadas'),
     path('pendentes/', views.crm_list_pendente, name='crmlist-pendentes'),
     path('crmdetail/<int:crm_id>/', views.crm_detail, name='crm-detail'),
+    path('busca/', views.busca, name='search')
 ]
 
