@@ -15,13 +15,13 @@ def registration(request):
         nome = request.POST.get("nome")
         email = request.POST.get("email")    
         matricula = request.POST.get("matricula")
-        setor = request.POST.get("setores")
+        setor_id = request.POST.get("setores")
+        setor = Setor.objects.get(id=setor_id)
         senha = request.POST.get("senha")
 
+        user = CustomUser.objects.create(username=matricula, email=email,
+        password=senha, first_name=nome, setor=setor)
 
-        user = CustomUser.objects.create_user(username=matricula, email=email,
-        password=senha, first_name=nome)
-        
         
 
         user.save()

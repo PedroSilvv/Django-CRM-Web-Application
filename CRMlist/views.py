@@ -27,21 +27,23 @@ def create_random_CRM():
 @login_required(login_url='/')
 def crm_list_processo(request):    
     return render(request, 'crm_list.html', context={
-        'qts_crm' : Create_CRM.objects.all(),
-        'crm' : Create_CRM.objects,
+        'qts_crm' : Create_CRM.objects.filter(status_crm='em processo'),
         'status_crm' : 'processo'
     })
 
 @login_required(login_url='/')
 def crm_list_finalizada(request):
     return render(request, 'crm_list.html', context={
+        'qts_crm' : Create_CRM.objects.filter(status_crm='finalizadas'),
         'status_crm' : 'finalizada'
     })
 
 @login_required(login_url='/')
 def crm_list_pendente(request):
     return render(request, 'crm_list.html', context={
+        'qts_crm' : Create_CRM.objects.filter(status_crm='pendentes'),
         'status_crm' : 'pendente'
+        
     })
 
 
@@ -58,7 +60,7 @@ def crm_detail(request, crm_id):
 def busca(request):
     termo = request.GET.get("termo")
     qts_crm = Create_CRM.objects.order_by('-id').filter(
-        id=termo,
+        id__icontains=termo
     )
 
     return render(request, 'busca.html', context={
@@ -66,3 +68,5 @@ def busca(request):
         'status_crm' : 'processo'
     })
 
+def minhas_crm_emprocesso(request):
+    pass

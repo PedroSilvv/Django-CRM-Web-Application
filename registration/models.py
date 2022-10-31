@@ -18,7 +18,7 @@ class Setor(models.Model):
 class CustomUser(AbstractUser):
     
     email = models.EmailField(unique=True)
-    setor = models.ForeignKey(Setor, on_delete=models.CASCADE, default=1)
+    setor = models.ForeignKey(Setor, on_delete=models.CASCADE, default=1, related_name='usuarios')
 
     def __str__(self):
         return self.first_name

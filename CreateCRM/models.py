@@ -26,7 +26,7 @@ class Create_CRM(models.Model):
     justificativa = models.TextField()
     dependencia = models.BooleanField(default=False)
     empresa = models.CharField(max_length=50)
-    status_crm = models.CharField(max_length=50, choices=STATUS)
+    status_crm = models.CharField(max_length=50, choices=STATUS, default='Pendentes')
     versao = models.IntegerField(null=False, default=1)
     complexidade_crm = models.CharField(max_length=50, choices=COMPLEXIDADE, blank=True)
     file = models.FileField(blank=True, upload_to='files/%Y/%m/',)

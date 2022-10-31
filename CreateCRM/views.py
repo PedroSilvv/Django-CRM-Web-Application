@@ -33,7 +33,7 @@ def createcrm(request):
         crm = Create_CRM.objects.create(solicitante=solicitante, data_criacao=data, empresa=empresa, versao=versao, 
         file=file, descricao=descricao, justificativa=justificativa, objetivo=objetivo)
         
-        
+
         crm.setor.add(setores)
 
         crm.save()
