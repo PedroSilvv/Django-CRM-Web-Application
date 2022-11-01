@@ -57,7 +57,6 @@ def crm_detail(request, crm_id):
     if request.method == 'POST':
         if request.POST['arquivar']:
                 crm.mostrar_crm = False
-                crm.save()
                 return render(request, 'crm_list.html')
 
     return render(request, 'crm_detail.html', {
@@ -109,6 +108,16 @@ def minhas_crm_finalizada(request):
     return render(request, 'my_crm_list.html', context={
         'qts_crm' : qts_crm,
         'status_crm' : 'finalizada'
+    })
+
+
+@login_required(login_url='/')
+def crm_arquivada(request):
+
+    qts_crm = Create_CRM.objects.filter(mostrar_crm=False)
+
+    return render(request, 'my.crm_list.html', context={
+        'qts_crm' : qts_crm
     })
 
 

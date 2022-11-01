@@ -22,8 +22,6 @@ def registration(request):
         user = CustomUser.objects.create(username=matricula, email=email,
         password=senha, first_name=nome, setor=setor)
 
-        
-
         user.save()
 
         return render(request, 'home.html')
