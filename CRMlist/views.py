@@ -68,5 +68,34 @@ def busca(request):
         'status_crm' : 'processo'
     })
 
-def minhas_crm_emprocesso(request):
-    pass
+def minhas_crm_pendente(request):
+    usuario = request.user 
+    setor_usuario = usuario.setor
+    qts_crm = Create_CRM.objects.filter(status_crm='pendentes', setor=setor_usuario)
+
+    return render(request, 'my_crm_list.html', context={
+        'qts_crm' : qts_crm,
+        'status_crm' : 'pendente'
+    })
+
+
+def minhas_crm_processo(request):
+    usuario = request.user 
+    setor_usuario = usuario.setor
+    qts_crm = Create_CRM.objects.filter(status_crm='em processo', setor=setor_usuario)
+
+    return render(request, 'my_crm_list.html', context={
+        'qts_crm' : qts_crm,
+        'status_crm' : 'processo'
+    })
+
+
+def minhas_crm_finalizada(request):
+    usuario = request.user 
+    setor_usuario = usuario.setor
+    qts_crm = Create_CRM.objects.filter(status_crm='finalizadas', setor=setor_usuario)
+
+    return render(request, 'my_crm_list.html', context={
+        'qts_crm' : qts_crm,
+        'status_crm' : 'finalizada'
+    })
