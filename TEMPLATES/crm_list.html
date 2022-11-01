@@ -45,8 +45,10 @@
                     <h3>Em Processo...</h3>
                 {%elif status_crm == 'finalizada'%}
                     <h3>Finalizadas...</h3>
-                {%else%}
+                {%elif status_crm == 'pendente'%}
                     <h3>Pendentes...</h3>
+                {%else%}
+                    <h3>. . .</h3>
                 {%endif%}
 
                 <img src={% static 'images/caret_down.png' %}>

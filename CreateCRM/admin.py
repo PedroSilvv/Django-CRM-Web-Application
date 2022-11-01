@@ -3,6 +3,6 @@ from .models import Create_CRM
 
 
 class CreateCRMAdmin(admin.ModelAdmin):
-    list_display = ("id", "data", "empresa")
+    list_display = ("id", "data_criacao", "empresa", "mostrar_crm")
 
-admin.site.register(Create_CRM)
+admin.site.register(Create_CRM, CreateCRMAdmin)

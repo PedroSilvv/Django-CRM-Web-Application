@@ -112,9 +112,25 @@
                     </div>
 
                     <div class="crm-detail-buttons">
-                        <button class='arquivar-button' type="submit">Arquivar CRM</button>
-                        <button class='editar-button'   type="submit">Editar</button>
-                        <button class='versao-button'   type="submit">Versões Anteriores</button>
+                        
+                        <form action='' method='POST' >
+                            {% csrf_token %}
+
+                             {% if crm.solicitante == request.user  %}
+                                <button class='arquivar-button' 
+                                    type="submit" 
+                                    value='arquivar'
+                                    id='arquivar' 
+                                    name='arquivar'>
+                                    Arquivar CRM</button>
+                                <button class='editar-button' 
+                                    value='editar'
+                                    id='editar' 
+                                    name='editar'
+                                    type="submit">Editar</button>
+                            {% endif %}
+                            <button class='versao-button'   type="submit">Versões Anteriores</button>
+                        </form>
                     </div>
 
                 </div>

@@ -25,6 +25,7 @@ class Create_CRM(models.Model):
     objetivo = models.TextField()
     justificativa = models.TextField()
     dependencia = models.BooleanField(default=False)
+    mostrar_crm = models.BooleanField(default=True)
     empresa = models.CharField(max_length=50)
     status_crm = models.CharField(max_length=50, choices=STATUS, default='Pendentes')
     versao = models.IntegerField(null=False, default=1)
