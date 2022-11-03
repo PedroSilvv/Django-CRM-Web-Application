@@ -1,7 +1,7 @@
 from multiprocessing import context
 from winreg import CreateKeyEx
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
 import random
 from unicodedata import digit
 from faker import Faker
@@ -9,6 +9,8 @@ from CreateCRM.models import Create_CRM
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q, Value
 from django.db.models.functions import Concat
+from django.conf import settings
+import os
 
 fake = Faker()
 
@@ -57,6 +59,7 @@ def crm_detail(request, crm_id):
     if request.method == 'POST':
         if request.POST['arquivar']:
                 crm.mostrar_crm = False
+                crm.save()
                 return render(request, 'crm_list.html')
 
     return render(request, 'crm_detail.html', {
@@ -64,6 +67,15 @@ def crm_detail(request, crm_id):
         'setores' : crm.setor.all(),
     })
 
+def download_files(request, path):
+    file_path = os.path.join(settings.MEDIA_ROOT, path)
+    if os.path.exists(file_path):
+        with open(file_path, 'rb') as fh:
+            response=HttpResponse(fh.read(), content_type='application/file')
+            response['Content-Disposition']='inline;filename'+os.path.basename(file_path)
+            return response
+
+    raise Http404
 
 def busca(request):
     termo = request.GET.get("termo")

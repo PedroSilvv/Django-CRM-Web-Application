@@ -38,8 +38,4 @@ class Create_CRM(models.Model):
         return f'CRM - {self.id}'
 
 
-class Aceite(models.Model):
-    pass
-
-
 
