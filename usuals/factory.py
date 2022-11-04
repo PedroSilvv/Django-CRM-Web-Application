@@ -17,3 +17,17 @@ def create_random_CRM():
 #print(fake.random_number(digits=4))
 #print(fake.date())
 
+def print(param):
+
+    return f'{param}'
+
+
+def fake_crm():
+    pass
+
+def fake_user():
+    pass
+
+
+if __name__ == 'main':
+    pass
