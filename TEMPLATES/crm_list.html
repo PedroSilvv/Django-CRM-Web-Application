@@ -71,11 +71,11 @@
                         <div class='date-container'>
                             <div class='crm-date'>
                                 <img src={% static "images/calendar.png" %}>
-                                <a href={% url 'crm-detail' crm.id %}>{{crm.data_criacao}}</a>
+                                <a href={% url 'crm-detail' crm.id crm.versao  %}>{{crm.data_criacao}}</a>
                             </div>
                             <div class='number-person'>
                                 <img src={% static "images/user.png" %}>
-                                <a href={% url 'crm-detail' crm.id %}>{{crm.solicitante}}</a>
+                                <a href={% url 'crm-detail' crm.id crm.versao %}>{{crm.solicitante}}</a>
                             </div>
                         </div>               
                     </div>

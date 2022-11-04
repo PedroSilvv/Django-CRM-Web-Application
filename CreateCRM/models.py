@@ -19,8 +19,9 @@ class Create_CRM(models.Model):
         ('Media','media'),
         ('Baixa', 'baixa')
     )
-    
-    status_crm = models.CharField(max_length=50, choices=STATUS, default='Pendentes')
+
+
+    versao = models.IntegerField(null=False, default=1)
     data_criacao = models.DateField()
     descricao = models.TextField()
     objetivo = models.TextField()
@@ -28,13 +29,18 @@ class Create_CRM(models.Model):
     dependencia = models.BooleanField(default=False)
     mostrar_crm = models.BooleanField(default=True)
     empresa = models.CharField(max_length=50)
-    versao = models.IntegerField(default=1)
     status_crm = models.CharField(max_length=50, choices=STATUS, default='Pendentes')
     complexidade_crm = models.CharField(max_length=50, choices=COMPLEXIDADE, blank=True)
     file = models.FileField(blank=True, upload_to='files/%Y/%m/',)
     solicitante = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     setor = models.ManyToManyField(Setor, related_name='setores_crm')
 
+    class Meta:
+        db_table = 'create_crm'
+        unique_together = [['id', 'versao']]
+
+
     def __str__(self):
         return f'CRM - {self.id}'
+
 

@@ -8,9 +8,10 @@ from faker import Faker
 from CreateCRM.models import Create_CRM
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q, Value
-from django.db.models.functions import Concat
 from django.conf import settings
 import os
+from registration.models import Setor
+
 
 fake = Faker()
 
@@ -26,6 +27,10 @@ def create_random_CRM():
 
 #print(fake.random_number(digits=4))
 #print(fake.date())
+
+
+
+
 
 
 @login_required(login_url='/')
@@ -52,20 +57,15 @@ def crm_list_pendente(request):
 
 
 @login_required(login_url='/')
-def crm_detail(request, crm_id):
-
-    crm = Create_CRM.objects.get(id=crm_id)
+def crm_detail(request, crm_id, crm_versao):
     
-    if request.method == 'POST':
-        if request.POST['arquivar']:
-                crm.mostrar_crm = False
-                crm.save()
-                return render(request, 'crm_list.html')
-
+    crm = Create_CRM.objects.get(id=crm_id, versao=crm_versao)
+ 
     return render(request, 'crm_detail.html', {
         'crm' : crm,
-        'setores' : crm.setor.all(),
+        'setores' : crm.setor.all()
     })
+
 
 def download_files(request, path):
     file_path = os.path.join(settings.MEDIA_ROOT, path)
@@ -77,6 +77,8 @@ def download_files(request, path):
 
     raise Http404
 
+
+
 def busca(request):
     termo = request.GET.get("termo")
     qts_crm = Create_CRM.objects.order_by('-id').filter(
@@ -86,6 +88,9 @@ def busca(request):
     return render(request, 'busca.html', context={
         'qts_crm' : qts_crm,
     })
+
+
+
 
 @login_required(login_url='/')
 def minhas_crm_pendente(request):
@@ -122,7 +127,6 @@ def minhas_crm_finalizada(request):
         'status_crm' : 'finalizada'
     })
 
-
 @login_required(login_url='/')
 def crm_arquivada(request):
 
@@ -131,5 +135,49 @@ def crm_arquivada(request):
     return render(request, 'my.crm_list.html', context={
         'qts_crm' : qts_crm
     })
+
+@login_required(login_url='/')
+def editar_crm(request, crm_id, crm_versao):
+
+    crm = Create_CRM.objects.get(id=crm_id, versao=crm_versao)
+
+    return render(request, 'update_crm.html', context={
+        'crm' : crm,
+        'setores' : crm.setor.all(),
+        'all_setores' : Setor.objects.values
+    })
+
+@login_required(login_url='/')
+def update_crm(request, crm_id, crm_versao):
+    
+    try:
+        solicitante = request.user
+        data = request.POST.get("data")
+        empresa = request.POST.get("empresa")
+        file = request.FILES.get('upload')
+        setores = request.POST.get('setores')
+        descricao = request.POST.get('descricao')
+        justificativa = request.POST.get('justificativa')
+        objetivo = request.POST.get('objetivo')
+
+        crm = Create_CRM.objects.create(id=crm_id, versao=crm_versao+1, solicitante=solicitante, data_criacao=data, empresa=empresa,
+        file=file, descricao=descricao, justificativa=justificativa, objetivo=objetivo)
+
+        crm.setor.add(setores)
+        crm.save()
+
+        return render(request, 'home.html')
+
+    except :
+        return render(request, 'home.html')
+
+
+
+def arquivar_crm(request, crm_id, crm_versao):
+
+        Create_CRM.objects.filter(id=crm_id, versao=crm_versao).update(mostrar_crm=False)
+        return render(request, 'home.html')
+        
+
 
 

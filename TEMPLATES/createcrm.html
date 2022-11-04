@@ -29,77 +29,80 @@
     <div class="main-container">
         <div class="form-content">
             <div class="form-tittle-box" >
-                <h3>Solicitação</h3>
+                {% block 'title' %}<h3>Solicitação</h3>{% endblock 'title'  %}
             </div>
 
-            <form action='{{ action }}' method="POST" enctype="multipart/form-data">
-
+            {%block 'form-action'%}
+                <form action='{{ action }}' method="POST" enctype="multipart/form-data">
+            {%endblock 'form-action'%}
                 {% csrf_token %}
 
                 <fieldset>
-                    <div class="inputs-con">
-                        <div class="small-input-con">
-                            <input type='text' name="solicitante" id="solicitante" class="small-input">
-                            <label for="solicitante">Solicitante</label>
-                        </div>
+                    {% block 'formulario' %}
+                        <div class="inputs-con">
+                            <div class="small-input-con">
+                                <input type='text' name="solicitante" id="solicitante" class="small-input">
+                                <label for="solicitante">Solicitante</label>
+                            </div>
 
-                        <div class="small-input-con">
-                            <input type='date' name="data" id="data" class="small-input">
-                            <label for="data"></label>
-                        </div>
+                            <div class="small-input-con">
+                                <input type='date' name="data" id="data" class="small-input">
+                                <label for="data"></label>
+                            </div>
 
-                        <div class="small-input-con">
-                            <input type='text' name="empresa" id="empresa" class="small-input">
-                            <label for="empresa">Empresa</label>
-                        </div>
+                            <div class="small-input-con">
+                                <input type='text' name="empresa" id="empresa" class="small-input">
+                                <label for="empresa">Empresa</label>
+                            </div>
 
-                        <div class="small-input-con">
-                            <input type='text' name="versao" id="versao" class="small-input">
-                            <label for="versao">Versão CRM</label>
-                        </div>
+                            <div class="small-input-con">
+                                <input type='text' name="versao" id="versao" class="small-input">
+                                <label for="versao">Versão CRM</label>
+                            </div>
 
-                        <div class="small-input-con">
-                            <input type='file' name="upload" id="upload" class="small-input" multiple="multiple">
-                            <label for="upload"></label>
-                        </div>
+                            <div class="small-input-con">
+                                <input type='file' name="upload" id="upload" class="small-input" multiple="multiple">
+                                <label for="upload"></label>
+                            </div>
 
-                        <div class="small-input-con">
-                            <select name='setores' id="setores" multiple="multiple">
-                                {%for setor in setores%}
-                                    <option value={{setor.id}}>{{setor.nome}}</option>
-                                {%endfor%}
-                            </select>
-                        </div>
+                            <div class="small-input-con">
+                                <select name='setores' id="setores" multiple="multiple">
+                                    {%for setor in setores%}
+                                        <option value={{setor.id}}>{{setor.nome}}</option>
+                                    {%endfor%}
+                                </select>
+                            </div>
 
-                        <div class="tall-input-con">
-                            <textarea type='text' name="descricao" id="descricao" placeholder="Descrição"></textarea>
-                        </div>
+                            <div class="tall-input-con">
+                                <textarea type='text' name="descricao" id="descricao" placeholder="Descrição"></textarea>
+                            </div>
 
-                        <div class="tall-input-con">
-                            <textarea type='text' name="justificativa" id="justificativa" placeholder="Justificativa"> </textarea>
-                        </div>
+                            <div class="tall-input-con">
+                                <textarea type='text' name="justificativa" id="justificativa" placeholder="Justificativa"> </textarea>
+                            </div>
 
-                        <div class="tall-input-con">
-                            <textarea type='text' name="objetivo" id="objetivo" placeholder="Objetivo"> </textarea>
-                        </div>
+                            <div class="tall-input-con">
+                                <textarea type='text' name="objetivo" id="objetivo" placeholder="Objetivo"> </textarea>
+                            </div>
+                            
+
+                            <div class='org-div'>
+                                <div class="crm-dependence-check-box">
+                                    <h3>Essa CRM depende de outro desenvolvimento?</h3>
+                                    <br>
                         
-
-                        <div class='org-div'>
-                            <div class="crm-dependence-check-box">
-                                <h3>Essa CRM depende de outro desenvolvimento?</h3>
-                                <br>
-                    
-                                <input type="radio" name="sim" id="dependence-button-sim" placeholder="Sim">
-                                <label for="button1">Sim</label>
-                                
-                                <input type="radio" name="não" id="dependence-button-nao" placeholder="Não">
-                                <label for="button2">Não</label>
-                            </div>
-                            <div class="solicitation-button">
-                                <button class="form-button" type="submit" id="solict-button">Solicitar</button>
-                            </div>
-                        <div/>
-                    </div>
+                                    <input type="radio" name="sim" id="dependence-button-sim" placeholder="Sim">
+                                    <label for="button1">Sim</label>
+                                    
+                                    <input type="radio" name="não" id="dependence-button-nao" placeholder="Não">
+                                    <label for="button2">Não</label>
+                                </div>
+                                <div class="solicitation-button">
+                                    <button class="form-button" type="submit" id="solict-button">Solicitar</button>
+                                </div>
+                            <div/>
+                        </div>
+                    {% endblock 'formulario' %}
                 </fieldset>
 
             </form>

@@ -50,7 +50,6 @@
 
                     <div class="short-detail">
                         <h3>Setores</h3>
-                        
                         <h4>{% for setor in setores%}{{setor}}--{% endfor %}</h4>
                     </div>
 
@@ -106,12 +105,11 @@
 
                         <div class="valor">
                             <div class='setor'>
-                                {% for setor in setores %}
+                                {% for setor in setores%}
                                     <h3>{{setor}}</h3>
                                 {%empty%}
                                     <h3>Sem Setores</h3>
-                                {%endfor%}
-
+                                {% endfor %}
                             </div>
 
                             <div class='colaborador'>
@@ -126,17 +124,18 @@
                             {% csrf_token %}
 
                             {% if crm.solicitante == request.user  %}
-                                <button class='arquivar-button' 
+                                <a class='arquivar-button' 
                                     type="submit" 
                                     value='arquivar'
                                     id='arquivar' 
-                                    name='arquivar'>
-                                    Arquivar CRM</button>
-                                <button class='editar-button' 
+                                    name='arquivar' href={% url 'arquivar_crm' crm.id crm.versao %}>
+                                    Arquivar CRM</a>
+                                <a class='editar-button' 
                                     value='editar'
                                     id='editar' 
                                     name='editar'
-                                    type="submit">Editar</button>
+                                    type="submit" href={% url 'editar_crm' crm.id crm.versao %}>
+                                    Editar</a>
                             {% endif %}
                             {% if crm.status_crm == 'Pendentes' and request.user.setor in setores and request.user != crm.solicitante%}
                                 <button class='arquivar-button' 

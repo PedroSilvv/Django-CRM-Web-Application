@@ -39,7 +39,7 @@ def createcrm(request):
         crm.save()
 
         return render(request, 'home.html')
-
+    
 
 
 
