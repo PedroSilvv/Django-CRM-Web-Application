@@ -74,7 +74,7 @@ WSGI_APPLICATION = 'CRM.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME' : 'Crm-QQtech',
+        'NAME' : 'peter',
         'USER' : 'root',
         'PASSWORD' : 'root123',
         'HOST' : 'localhost',

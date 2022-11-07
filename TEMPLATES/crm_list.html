@@ -48,7 +48,7 @@
                 {%elif status_crm == 'pendente'%}
                     <h3>Pendentes...</h3>
                 {%else%}
-                    <h3>. . .</h3>
+                    <h3>{{status_crm}} CRM {{crm.id}}</h3>
                 {%endif%}
 
                 <img src={% static 'images/caret_down.png' %}>
@@ -77,6 +77,10 @@
                                 <img src={% static "images/user.png" %}>
                                 <a href={% url 'crm-detail' crm.id crm.versao %}>{{crm.solicitante}}</a>
                             </div>
+                            <div class='number-person'>
+                                <a href={% url 'crm-detail' crm.id crm.versao %}>v{{crm.versao}}</a>
+                            </div>
+
                         </div>               
                     </div>
                 {%empty%}

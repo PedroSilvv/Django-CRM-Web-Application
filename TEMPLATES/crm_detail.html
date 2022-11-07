@@ -105,15 +105,17 @@
 
                         <div class="valor">
                             <div class='setor'>
-                                {% for setor in setores%}
-                                    <h3>{{setor}}</h3>
+                                {% for aceite in aceites%}
+                                    <h3>{{aceite.colaborador.setor}}</h3>
                                 {%empty%}
                                     <h3>Sem Setores</h3>
                                 {% endfor %}
                             </div>
 
                             <div class='colaborador'>
-                                <h3>Allan C.</h3>
+                                {% for aceite in aceites%}
+                                    <h3>{{aceite.colaborador}}</h3>
+                                {% endfor %}
                             </div>
                         </div>
                     </div>
@@ -138,21 +140,24 @@
                                     Editar</a>
                             {% endif %}
                             {% if crm.status_crm == 'Pendentes' and request.user.setor in setores and request.user != crm.solicitante%}
-                                <button class='arquivar-button' 
+                                <a class='arquivar-button' 
                                     type="submit" 
                                     value='rejeitar'
                                     id='rejeitar' 
-                                    name='rejeitar'>
-                                    REJEITAR</button>
-                                <button class='editar-button' 
+                                    name='rejeitar' href={% url 'fb-negativo' crm.id crm.versao %}>
+                                    REJEITAR</a>
+                                <a class='editar-button' 
                                     value='aceitar'
                                     id='aceitar' 
-                                    name='aceitar'
-                                    type="submit">
-                                    ACEITAR</button>
+                                    name='aceitar' href={% url 'fb-positivo' crm.id crm.versao %}>
+                                    ACEITAR</a>
                             {% endif %}
                             
-                            <button class='versao-button'   type="submit">Versões Anteriores</button>
+                            <a class='versao-button'
+                            value="versoes"
+                            name='versoes'
+                            id='versoes' href={% url 'versoes' crm.id %}
+                            >Versões Anteriores</a>
                         </form>
                     </div>
 

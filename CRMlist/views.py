@@ -5,7 +5,7 @@ from django.http import HttpResponse, Http404
 import random
 from unicodedata import digit
 from faker import Faker
-from CreateCRM.models import Create_CRM
+from CreateCRM.models import Create_CRM, Feedback
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q, Value
 from django.conf import settings
@@ -60,10 +60,11 @@ def crm_list_pendente(request):
 def crm_detail(request, crm_id, crm_versao):
     
     crm = Create_CRM.objects.get(id=crm_id, versao=crm_versao)
- 
+    aceites = Feedback.objects.filter(crm=crm_id, versao_crm=crm_versao)
     return render(request, 'crm_detail.html', {
         'crm' : crm,
-        'setores' : crm.setor.all()
+        'setores' : crm.setor.all(),
+        'aceites' : aceites
     })
 
 
@@ -74,7 +75,7 @@ def download_files(request, path):
             response=HttpResponse(fh.read(), content_type='application/file')
             response['Content-Disposition']='inline;filename'+os.path.basename(file_path)
             return response
-
+    
     raise Http404
 
 
@@ -82,7 +83,7 @@ def download_files(request, path):
 def busca(request):
     termo = request.GET.get("termo")
     qts_crm = Create_CRM.objects.order_by('-id').filter(
-        Q(id__icontains=termo) | Q(data_criacao__icontains=termo) 
+        Q(id__icontains=termo) | Q(data_criacao__icontains=termo)
     )
 
     return render(request, 'busca.html', context={
@@ -180,4 +181,32 @@ def arquivar_crm(request, crm_id, crm_versao):
         
 
 
+def versoes_anteriores(request, crm_id):
+    
+    return render(request, 'crm_list.html', context={
+        'qts_crm' : Create_CRM.objects.filter(id=crm_id),
+        'status_crm' : 'Versões'
+    })
+
+
+def feedback_positivo(request, crm_id, crm_versao):
+
+    colaborador = request.user
+    crm = Create_CRM.objects.get(id=crm_id, versao=crm_versao)
+    versao = crm.versao
+
+    
+    Feedback.objects.get_or_create(colaborador=colaborador, crm=crm, versao_crm=versao, resposta=True, justificativa='Opa')
+    return render(request, 'my_crm_list.html')
+    
+
+
+def feedback_negativo(request, crm_id, crm_versao):
+
+    colaborador = request.user 
+    crm = Create_CRM.objects.get(id=crm_id, versao=crm_versao)
+    versao = crm.versao
+
+    Feedback.objects.get_or_create(colaborador=colaborador, crm=crm, versao_crm=versao, resposta=False, justificativa='Opa')
+    return render(request, 'my_crm_list.html')
 

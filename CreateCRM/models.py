@@ -21,6 +21,7 @@ class Create_CRM(models.Model):
     )
 
 
+    id = models.AutoField(primary_key=True)
     versao = models.IntegerField(null=False, default=1)
     data_criacao = models.DateField()
     descricao = models.TextField()
@@ -36,11 +37,17 @@ class Create_CRM(models.Model):
     setor = models.ManyToManyField(Setor, related_name='setores_crm')
 
     class Meta:
-        db_table = 'create_crm'
-        unique_together = [['id', 'versao']]
-
+        unique_together = (('id', 'versao'),)
 
     def __str__(self):
         return f'CRM - {self.id}'
 
 
+
+class Feedback(models.Model):
+
+    colaborador = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    crm = models.ForeignKey(Create_CRM, on_delete=models.CASCADE, related_name='crm')
+    versao_crm = models.IntegerField()
+    resposta = models.BooleanField(default=False)
+    justificativa = models.TextField()

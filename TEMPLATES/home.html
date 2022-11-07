@@ -25,6 +25,11 @@
             <a class='new-crm-icon1' href='{% url 'createcrm'%}'><img src={% static "images/prancheta.png" %}></a>
             <a class='new-crm-icon2' href='{% url 'createcrm'%}'><img src={% static "images/mais.png" %}></a>
         </nav>
+
+
+
+        <h1>{{request.user}}</h1>
+        <h1>{{request.user.setor}}</h1>
     </header>
 
     

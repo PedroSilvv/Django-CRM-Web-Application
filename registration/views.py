@@ -3,6 +3,8 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib.auth.models import User
 from .models import CustomUser, Setor
+from CreateCRM.models import Create_CRM
+from django.contrib.auth import login as login_crm
 
 def registration(request):
     if request.method == "GET":
@@ -19,9 +21,13 @@ def registration(request):
         setor = Setor.objects.get(id=setor_id)
         senha = request.POST.get("senha")
 
-        user = CustomUser.objects.create(username=matricula, email=email,
+        user = CustomUser.objects.create_user(username=matricula, email=email,
         password=senha, first_name=nome, setor=setor)
 
         user.save()
 
+        login_crm(request, user)
+
         return render(request, 'home.html')
+
+
