@@ -1,6 +1,6 @@
 from multiprocessing import context
 from winreg import CreateKeyEx
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, Http404
 import random
 from unicodedata import digit
@@ -11,6 +11,7 @@ from django.db.models import Q, Value
 from django.conf import settings
 import os
 from registration.models import Setor
+
 
 
 fake = Faker()
@@ -59,12 +60,36 @@ def crm_list_pendente(request):
 @login_required(login_url='/')
 def crm_detail(request, crm_id, crm_versao):
     
+    user = request.user
+    setor_usuario = request.user.setor
     crm = Create_CRM.objects.get(id=crm_id, versao=crm_versao)
-    aceites = Feedback.objects.filter(crm=crm_id, versao_crm=crm_versao)
+    aceites = Feedback.objects.filter(crm=crm_id, versao_crm=crm_versao).all()
+    total_setores = crm.setor.all()
+    lista_aceites = []
+    lista_setores = []
+
+    for x in total_setores:
+        lista_setores.append(x)
+
+    for x in aceites:
+        lista_aceites.append(x)
     
+    print(lista_aceites)
+    print(lista_setores)
+
+    try:
+        aceite = Feedback.objects.get(colaborador=user, crm=crm_id, versao_crm=crm_versao)
+    except:
+        aceite = False
+
     return render(request, 'crm_detail.html', context={
         'crm' : crm,
         'setores' : crm.setor.all(),
+        'aceites' : aceites,
+        'aceite' : aceite,
+        'lista_setores' : len(lista_setores),
+        'lista_aceites' : len(lista_aceites),
+        'setor_usuario' : request.user.setor
     })
 
 
@@ -83,7 +108,7 @@ def download_files(request, path):
 def busca(request):
     termo = request.GET.get("termo")
     qts_crm = Create_CRM.objects.order_by('-id').filter(
-        Q(id__icontains=termo) | Q(data_criacao__icontains=termo)
+        Q(id=termo) | Q(data_criacao__icontains=termo)
     )
 
     return render(request, 'busca.html', context={
@@ -131,7 +156,7 @@ def minhas_crm_finalizada(request):
 @login_required(login_url='/')
 def crm_arquivada(request):
 
-    qts_crm = Create_CRM.objects.filter(mostrar_crm=False)
+    qts_crm = Create_CRM.objects.filter(status_crm='finalizadas')
 
     return render(request, 'my.crm_list.html', context={
         'qts_crm' : qts_crm
@@ -176,7 +201,7 @@ def update_crm(request, crm_id, crm_versao):
 
 def arquivar_crm(request, crm_id, crm_versao):
 
-        Create_CRM.objects.filter(id=crm_id, versao=crm_versao).update(mostrar_crm=False)
+        Create_CRM.objects.filter(id=crm_id, versao=crm_versao).update(status_crm='finalizadas')
         return render(request, 'home.html')
         
 
@@ -195,10 +220,26 @@ def feedback_positivo(request, crm_id, crm_versao):
     crm = Create_CRM.objects.get(id=crm_id, versao=crm_versao)
     versao = crm.versao
 
+    Feedback.objects.get_or_create(colaborador=colaborador, crm=crm, versao_crm=versao, justificativa='...')
     
-    Feedback.objects.get_or_create(colaborador=colaborador, crm=crm, versao_crm=versao, resposta=True, justificativa='Opa')
+    Feedback.objects.filter(colaborador=colaborador, crm=crm, versao_crm=versao).update(resposta=True)
+
     return render(request, 'my_crm_list.html')
-    
+
+
+def rejeite(request, crm_id, crm_versao):
+    colaborador = request.user 
+    crm = Create_CRM.objects.get(id=crm_id, versao=crm_versao)
+    versao = crm.versao
+
+    if request.method == "POST":
+
+        justificativa = request.POST.get('rejeite')
+        
+        Feedback.objects.filter(colaborador=colaborador, crm=crm, versao_crm=versao).update(justificativa=justificativa)
+        return render(request, 'home.html', context={
+            'crm' : crm
+        })
 
 
 def feedback_negativo(request, crm_id, crm_versao):
@@ -207,6 +248,41 @@ def feedback_negativo(request, crm_id, crm_versao):
     crm = Create_CRM.objects.get(id=crm_id, versao=crm_versao)
     versao = crm.versao
 
-    Feedback.objects.get_or_create(colaborador=colaborador, crm=crm, versao_crm=versao, resposta=False, justificativa='Opa')
-    return render(request, 'my_crm_list.html')
+    Feedback.objects.get_or_create(colaborador=colaborador, crm=crm, versao_crm=versao, justificativa='Justificativa')
+    
+    Feedback.objects.filter(colaborador=colaborador, crm=crm, versao_crm=versao).update(resposta=False)
+    return render(request, 'rejeite.html', context={
+        'crm' : crm
+    })
 
+def flag_ti(request, crm_id, crm_versao):
+
+    Create_CRM.objects.filter(id=crm_id, versao=crm_versao).update(status_crm='em processo')
+
+    return render(request, 'home.html')
+
+
+def respostas_crm(request):
+
+    user = request.user
+    crm = Create_CRM.objects.filter(solicitante=user)
+
+    #Feedback.objects.filter(crm=crm)
+
+    return render(request, 'respostas_crm.html', context={
+        'qts_crm' : crm,
+    })
+
+
+def mostrar_respostas(request, crm_id, crm_versao):
+
+    crm = Create_CRM.objects.get(id=crm_id, versao=crm_versao)
+    versao = crm.versao
+    feed = Feedback.objects.filter(crm=crm, versao_crm=versao)
+
+    return render(request, 'resposta-view.html', context={
+        'crm' : crm,
+        'feed' : feed
+    })
+
+    

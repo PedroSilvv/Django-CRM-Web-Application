@@ -15,16 +15,20 @@
 
 <body>
     
-    <header>
-        <nav>
-            <div class="main-logo"><img src={% static "images/main_logo.png" %}></div>
-            <a href={% url 'homepage' %}>Home</a>
-            <a href={% url 'crmlist-processo' %}>CRMs</a>
-            <a href={% url 'mycrmlist-pendentes' %}>My Projects</a>
-            <a class='new-crm-icon1' href='{% url 'createcrm'%}'><img src={% static "images/prancheta.png" %}></a>
-            <a class='new-crm-icon2' href='{% url 'createcrm'%}'><img src={% static "images/mais.png" %}></a>
-        </nav>
-    </header>
+
+    
+        <header>
+            <nav>
+                <div class="main-logo"><img src={% static "images/main_logo.png" %}></div>
+                <a href={% url 'homepage' %}>Home</a>
+                <a href={% url 'crmlist-processo' %}>CRMs</a>
+                <a href={% url 'mycrmlist-pendentes' %}>My Projects</a>
+                <a href='{% url 'respostas' %}'>Respostas</a>
+                <a class='new-crm-icon1' href='{% url 'createcrm'%}'><img src={% static "images/prancheta.png" %}></a>
+                <a class='new-crm-icon2' href='{% url 'createcrm'%}'><img src={% static "images/mais.png" %}></a>
+            </nav>
+        </header>
+    
     
     <div class="main-container-crmdetail">
         <div class='content-box-crmdetail'>
@@ -108,7 +112,7 @@
                                 {% for aceite in aceites%}
                                     <h3>{{aceite.colaborador.setor}}</h3>
                                 {%empty%}
-                                    <h3>Sem Setores</h3>
+                                    <h3>Sem Respotas até o momento</h3>
                                 {% endfor %}
                             </div>
 
@@ -129,8 +133,14 @@
 
                     <div class="crm-detail-buttons">
                         
-                        <form action='' method='POST' >
+                        <form action='' method='POST' class='form-arquivar'>
                             {% csrf_token %}
+
+                            {% if setor_usuario.is_ti == True %}
+                                <a class='flag-ti' name='flagti' id='flagti'
+                                    name='arquivar' href={% url 'flagti' crm.id crm.versao %}>
+                                    >FLAG TI</a>
+                            {% endif %}
 
                             {% if crm.solicitante == request.user  %}
                                 <a class='arquivar-button' 
@@ -146,7 +156,7 @@
                                     type="submit" href={% url 'editar_crm' crm.id crm.versao %}>
                                     Editar</a>
                             {% endif %}
-                            {% if crm.status_crm == 'Pendentes' and request.user.setor in setores and request.user != crm.solicitante%}
+                            {% if crm.status_crm == 'Pendentes' and request.user.setor in setores and request.user != crm.solicitante and aceite == False and lista_aceites <= lista_setores and setor_usuario.is_ti == False%}
                                 <a class='arquivar-button' 
                                     type="submit" 
                                     value='rejeitar'
@@ -164,14 +174,38 @@
                             value="versoes"
                             name='versoes'
                             id='versoes' href={% url 'versoes' crm.id %}
-                            >Versões Anteriores</a>
+                            >VERSÕES</a>
+
                         </form>
                     </div>
 
                 </div>
+           
             </div>
         </div>
     </div>
+
+    <script>
+        function my_scope(){
+            const form = document.querySelector('.form-arquivar');
+
+            if(form){
+                form.addEventListener('submit', function(e){ 
+                    e.preventDefault();
+
+                    const confirmar = confirm('Tem certeza que deseja arquivar a CRM?')
+
+                    if(confirmar){
+                        form.submit();
+                    }
+                });
+            }
+
+        }
+
+        my_scope()
+
+    </script>
     
     <footer>
         <div class="skinny-footer-div">

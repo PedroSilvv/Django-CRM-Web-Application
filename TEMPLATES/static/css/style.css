@@ -209,6 +209,10 @@ fieldset {
     padding: 12px;
 }
 
+.small-input-con select{
+    height:50px;
+}
+
 .inputs-con{
     margin-top: 40px;
     text-align: center;
@@ -595,6 +599,8 @@ input[type="date"]{
     margin-top: 10px;
 }
 
+
+
 .reg-input-box select{
     padding-left : 7px;
 }
@@ -955,6 +961,7 @@ main-container-crmdetail{
     border: solid 1px #d3d3d3;
     background: #f6f6f6;
     margin-bottom: 30px;
+    word-wrap: break-word;
 }
 
 .tall-detail h3{
@@ -982,7 +989,7 @@ main-container-crmdetail{
 
 .crm-detail-buttons{
     display: flex;
-    margin-right:20px;
+    margin-top: 60px;
 }
 
 .crm-detail-buttons button{
@@ -1000,11 +1007,27 @@ main-container-crmdetail{
 
 
 .arquivar-button{
-    background:#EA2D3F;
+    background: #EA2D3F;
+    padding: 10px;
+    border-radius: 15px;
+    text-decoration: none;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    font-size : 14px;
+    font-weight: 600;
+    margin-right:30px;
 }
 
 .editar-button, .versao-button{
     background:#07680E;
+    padding: 10px;
+    border-radius: 15px;
+    text-decoration: none;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    font-size : 14px;
+    font-weight: 600;
+    margin-right:30px;
 }
 
 .chave{
@@ -1092,13 +1115,14 @@ main-container-crmdetail{
 .profile-box{
     background: white;
     width: 500px;
-    height: 400px;
+    height: 420px;
     margin-top: 80px;
     margin-left: auto;
     margin-right: auto;
     border: solid 0.1px #d6d6d6;
     border-radius: 20px;
     margin-bottom: 10rem;
+    text-align : center;
 }
 
 .profile-icon{
@@ -1138,4 +1162,48 @@ main-container-crmdetail{
     color : white;
     outline : none;
     text-decoration: none;
+}
+
+
+/* Justificativa REJEITE */
+
+.profile-box textarea{
+    padding: 1rem;
+    outline: none;
+    border: 1px solid rgb(164, 145, 145);
+    border-radius: 10px;
+    background: rgb(246, 246, 246);
+    width: 430px;
+    height: 250px;
+    font-size: 14px;
+    margin-top : 20px;
+}
+
+    
+.botao{
+    margin-top:25px;
+}
+
+.rejeitar-button button{
+    background: #EA2D3F;
+    padding: 10px;
+    border-radius: 15px;
+    text-decoration: none;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    font-size : 14px;
+    font-weight: 600;
+}
+
+
+.flag-ti{
+    background:blue;
+    padding: 10px;
+    border-radius: 15px;
+    text-decoration: none;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    font-size : 14px;
+    font-weight: 600;
+    margin-right:30px;
 }

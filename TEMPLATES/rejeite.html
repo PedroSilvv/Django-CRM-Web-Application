@@ -1,0 +1,31 @@
+{% extends 'home.html' %}
+
+{% block 'conteudo' %}
+
+<div class='home-main'>
+    <div class='profile-box'>
+        <div class='form-tittle-box'>
+            <h3>CRM 00{{crm.id}}</h3>
+        </div>
+        <form action={% url 'rejeite' crm.id crm.versao %} method='POST'>
+
+            {% csrf_token %}
+
+            <textarea type='text' name='rejeite' id='rejeite' placeholder='Justificativa do rejeite'
+            class='rejeito-input'> </textarea>
+
+            <div class='botao'>
+                <button class='rejeitar-button' 
+                type="submit" 
+                value='rejeitar'
+                id='rejeitar' 
+                name='rejeitar'>
+                REJEITAR</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+{% endblock 'conteudo' %}

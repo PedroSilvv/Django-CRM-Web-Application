@@ -25,6 +25,7 @@
             <a href={% url 'homepage' %}>Home</a>
             <a href={% url 'crmlist-processo' %}>CRMs</a>
             <a href={% url 'mycrmlist-pendentes' %}>My Projects</a>
+            <a href='{% url 'respostas' %}'>Respostas</a>
             <a class='new-crm-icon1' href='{% url 'createcrm'%}'><img src={% static "images/prancheta.png" %}></a>
             <a class='new-crm-icon2' href='{% url 'createcrm'%}'><img src={% static "images/mais.png" %}></a>
             
@@ -39,7 +40,9 @@
                 <button type="submit" class="search-button"><img src={% static "images/search_icon.png" %}></button>
             </form>
         </div>
+        
         <div class="content-box-crm-list">
+            {% block 'crm-list' %}
             <div class="title-crm-status">
                 {%if status_crm == 'processo'%}
                     <h3>Em Processo...</h3>
@@ -87,6 +90,7 @@
                     <div class='empty-alert'><a>Nenhuma CRM disponivel<a/></div>
                 {%endfor%}
             </div>
+        {% endblock 'crm-list' %}
         </div>
     </div>
 

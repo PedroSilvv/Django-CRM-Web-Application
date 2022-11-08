@@ -22,6 +22,7 @@
             <a href='{% url 'homepage' %}'>Home</a>
             <a href='{% url 'crmlist-processo' %}'>CRMs</a>
             <a href='{% url 'mycrmlist-pendentes' %}'>My Projects</a>
+            <a href='{% url 'respostas' %}'>Respostas</a>
             <a class='new-crm-icon1' href='{% url 'createcrm'%}'><img src={% static "images/prancheta.png" %}></a>
             <a class='new-crm-icon2' href='{% url 'createcrm'%}'><img src={% static "images/mais.png" %}></a>
             {%if request.user.is_authenticated %}
@@ -31,8 +32,9 @@
                 <a class='ti-icon'>TI</a>
             {% endif %}
         </nav>
+    </header>
 
-
+    {% block 'conteudo' %}
         <div class='home-main'>
             <div class='profile-box'>
                 <div class='profile-icon'>
@@ -40,7 +42,7 @@
                 </div>
                 
                 <div class='profile-infos'>
-                    <h2>Colaborador : {{request.user}}</h2>
+                    <h2>Colaborador(a): {{request.user}}</h2>
                     <h2>Matricula : {{request.user.username}}</h2>
                     <h2>Setor : {{request.user.setor}}</h2>
                 </div>
@@ -48,16 +50,9 @@
                 <div class='logout-button'>
                     <a href={% url 'logout' %}>Sair</a>
                 </div>
-            
             </div>
         </div>
-    </header>
-
-    
-
-
-
-
+    {% endblock 'conteudo' %}
 
 </body>
 

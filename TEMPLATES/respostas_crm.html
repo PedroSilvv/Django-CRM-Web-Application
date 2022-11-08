@@ -1,0 +1,38 @@
+{% extends 'crm_list.html' %}
+{% load static %}
+
+
+{% block 'crm-list' %}
+<div class="title-crm-status">
+    <h3 style='margin-left:35px'>Respostas</h3>
+</div>
+
+<div class="crms-list">
+    {% for crm in qts_crm  %}
+        <div class="crm-box">
+            <div class='crm-title'><h1>CRM {{crm.id}}</h1></div>
+            <div class='date-container'>
+                <div class='crm-date'>
+                    <img src={% static "images/calendar.png" %}>
+                    <a href={% url 'mostrar-respostas' crm.id crm.versao  %}>{{crm.data_criacao}}</a>
+                </div>
+                <div class='number-person'>
+                    <img src={% static "images/user.png" %}>
+                    <a href={% url 'mostrar-respostas' crm.id crm.versao  %}{{crm.solicitante}}</a>
+                </div>
+                <div class='number-person'>
+                    <a href={% url 'mostrar-respostas' crm.id crm.versao  %}>v{{crm.versao}}</a>
+                </div>
+
+            </div>               
+        </div>
+    {%empty%}
+        <div class='empty-alert'><a>Nenhuma Respotas até o mmomento<a/></div>
+    {%endfor%}
+</div>
+
+
+{% endblock 'crm-list' %}
+
+
+

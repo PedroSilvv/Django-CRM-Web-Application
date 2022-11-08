@@ -16,6 +16,10 @@ urlpatterns = [
     path('versoes-crm/<int:crm_id>', views.versoes_anteriores, name='versoes'),
     path('feedback-postivo/<int:crm_id>/<int:crm_versao>', views.feedback_positivo, name='fb-positivo'),
     path('feedback-negativo/<int:crm_id>/<int:crm_versao>', views.feedback_negativo, name='fb-negativo'),
+    path('rejeite/<int:crm_id>/<int:crm_versao>', views.rejeite, name='rejeite'),
+    path('flag-ti/<int:crm_id>/<int:crm_versao>', views.flag_ti, name='flagti'),
+    path('respostas/', views.respostas_crm, name='respostas'),
+    path('resposta-views/<int:crm_id>/<int:crm_versao>', views.mostrar_respostas, name='mostrar-respostas'),
     path('busca/', views.busca, name='search')
 ]
 

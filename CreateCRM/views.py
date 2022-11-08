@@ -24,7 +24,7 @@ def createcrm(request):
         empresa = request.POST.get('empresa')
         versao = request.POST.get('versao')
         file = request.FILES.get('upload')
-        setores = request.POST.get('setores')
+        setores = request.POST.getlist('setores')
         descricao = request.POST.get('descricao')
         justificativa = request.POST.get('justificativa')
         objetivo = request.POST.get('objetivo')
@@ -33,8 +33,8 @@ def createcrm(request):
         crm = Create_CRM.objects.create(solicitante=solicitante, data_criacao=data, empresa=empresa, versao=versao, 
         file=file, descricao=descricao, justificativa=justificativa, objetivo=objetivo)
         
-
-        crm.setor.add(setores)
+        for x in setores:
+            crm.setor.add(x)
 
         crm.save()
 

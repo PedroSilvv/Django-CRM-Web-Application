@@ -21,6 +21,7 @@
             <a href={% url 'homepage' %}>Home</a>
             <a href={% url 'crmlist-processo' %}>CRMs</a>
             <a href={% url 'mycrmlist-pendentes' %}>My Projects</a>
+            <a href='{% url 'respostas' %}'>Respostas</a>
             <a class='new-crm-icon1' href='{% url 'createcrm'%}'><img src={% static "images/prancheta.png" %}></a>
             <a class='new-crm-icon2' href='{% url 'createcrm'%}'><img src={% static "images/mais.png" %}></a>
         </nav>
@@ -71,11 +72,13 @@
                             </div>
 
                             <div class="small-input-con">
-                                <select name='setores' id="setores" multiple="multiple">
+                                <select name='setores' id="setores" multiple="multiple" class='select-setores'>
                                     {%for setor in setores%}
                                         <option value={{setor.id}}>{{setor.nome}}</option>
                                     {%endfor%}
                                 </select>
+                                    
+
                             </div>
 
                             <div class="tall-input-con">
@@ -119,6 +122,13 @@
             <a>© 2022 QQTech - All Rights Reserved</a>
         </div>
     </footer>
+
+    <script>
+        function dropdown(){
+            $('.select-setores').djangoselect2({placeholder:"Selecione os Setores", multiple : True});}
+
+            $dropdown()
+    </script>
 
 
 </body>
