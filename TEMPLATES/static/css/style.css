@@ -124,6 +124,7 @@ nav a:hover{
     margin-top: 4px;
 }
 
+
 /* CSS FOOTER */
 
 .skinny-footer-div{
@@ -1065,3 +1066,76 @@ main-container-crmdetail{
     margin-bottom : 15px;
 }
 
+.colaborador img{
+    width:15px;
+}
+
+.logout {
+    float : right;
+    margin-right: 40px;
+}
+
+.logout img{
+    width : 22px;
+}
+
+.ti-icon {
+    float: right;
+}
+
+/* CSS HOME*/
+
+.home-main{
+    justify-content: center;
+}
+
+.profile-box{
+    background: white;
+    width: 500px;
+    height: 400px;
+    margin-top: 80px;
+    margin-left: auto;
+    margin-right: auto;
+    border: solid 0.1px #d6d6d6;
+    border-radius: 20px;
+    margin-bottom: 10rem;
+}
+
+.profile-icon{
+    text-align: center;
+    margin-top: 30px;
+}
+
+.profile-icon img{
+    width: 100px;
+}
+
+.profile-infos{
+    text-align : center;
+    margin-top : 35px;
+}
+
+
+.profile-infos h2{
+    margin-top: 10px;
+}
+
+
+.logout-button{
+    margin-left: auto;
+    width: 70px;
+    background: #07680E;
+    height: 30px;
+    text-align: center;
+    border-radius: 15px;
+    margin-right: auto;
+    margin-top: 40px;
+}
+
+.logout-button a{
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color : white;
+    outline : none;
+    text-decoration: none;
+}

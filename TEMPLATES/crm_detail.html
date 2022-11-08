@@ -114,9 +114,16 @@
 
                             <div class='colaborador'>
                                 {% for aceite in aceites%}
-                                    <h3>{{aceite.colaborador}}</h3>
+                                    <h3>{{aceite.colaborador}}
+                                        {%if aceite.resposta == True%}
+                                            <img src={% static 'images/check.png' %}>
+                                        {% else %}
+                                            <img src={% static 'images/cross.png' %}>
+                                        {% endif %}
+                                    </h3>
                                 {% endfor %}
                             </div>
+                            
                         </div>
                     </div>
 

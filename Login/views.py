@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib.auth import authenticate
-from django.contrib.auth import login as login_crm
+from django.contrib.auth import login as login_crm, logout
 
 #Request para login.html mandado para url /login
 def login(request):
@@ -21,3 +21,11 @@ def login(request):
         else:
             return HttpResponse('Matricula ou Senha inexistentes em nosso sistema.')
 
+"""
+def logout(request):
+
+    logout(request)
+
+    return render(request, 'login.html')
+
+"""

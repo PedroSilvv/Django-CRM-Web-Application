@@ -7,4 +7,6 @@ from django.contrib.auth.decorators import login_required
 
 @login_required(login_url='login/')
 def homepage(request):
-    return render(request, 'home.html')
+    return render(request, 'home.html', context={
+        'setor_usuario' : request.user.setor
+    })

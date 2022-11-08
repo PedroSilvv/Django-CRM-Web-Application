@@ -61,10 +61,10 @@ def crm_detail(request, crm_id, crm_versao):
     
     crm = Create_CRM.objects.get(id=crm_id, versao=crm_versao)
     aceites = Feedback.objects.filter(crm=crm_id, versao_crm=crm_versao)
-    return render(request, 'crm_detail.html', {
+    
+    return render(request, 'crm_detail.html', context={
         'crm' : crm,
         'setores' : crm.setor.all(),
-        'aceites' : aceites
     })
 
 

@@ -12,28 +12,27 @@
 {% block 'formulario' %}
     <div class="inputs-con">
         <div class="small-input-con">
-            <input type='text' name="solicitante" id="solicitante" class="small-input" value={{crm.solicitante}}>
-            <label for="solicitante">Solicitante</label>
+            <input type='text' name="solicitante" id="solicitante" class="small-input" 
+            placeholder='Solicitante' value={{crm.solicitante}}>
         </div>
 
         <div class="small-input-con">
-            <input type='date' name="data" id="data" class="small-input" value={{crm.data_criacao}}>
-            <label for="data"></label>
+            <input type='date' name="data" id="data" class="small-input" 
+            placeholder='Data' value={{crm.data_criacao}}>
         </div>
 
         <div class="small-input-con">
-            <input type='text' name="empresa" id="empresa" class="small-input" value={{crm.empresa}}>
-            <label for="empresa">Empresa</label>
+            <input type='text' name="empresa" id="empresa" class="small-input"
+            placeholder='Empresa' value={{crm.empresa}}>
         </div>
 
         <div class="small-input-con">
-            <input type='text' name="versao" id="versao" class="small-input" value={{crm.versao}}>
-            <label for="versao">Versão CRM</label>
+            <input type='text' name="versao" id="versao" class="small-input"
+            placeholder='Versão CRM (campo automatico)' value={{crm.versao}}>
         </div>
 
         <div class="small-input-con">
             <input type='file' name="upload" id="upload" class="small-input" multiple="multiple">
-            <label for="upload"></label>
         </div>
 
         <div class="small-input-con">
