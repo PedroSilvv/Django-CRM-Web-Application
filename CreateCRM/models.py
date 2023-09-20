@@ -22,11 +22,11 @@ class Create_CRM(models.Model):
 
 
     id = models.AutoField(primary_key=True)
-    versao = models.IntegerField(null=False, default=1)
-    data_criacao = models.DateField()
-    descricao = models.TextField()
-    objetivo = models.TextField()
-    justificativa = models.TextField()
+    versao = models.IntegerField(blank=True, default=1)
+    data_criacao = models.DateField(auto_now=True)
+    descricao = models.TextField(blank=True)
+    objetivo = models.TextField(blank=True)
+    justificativa = models.TextField(blank=True)
     dependencia = models.BooleanField(default=False)
     mostrar_crm = models.BooleanField(default=True)
     empresa = models.CharField(max_length=50)

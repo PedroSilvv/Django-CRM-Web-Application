@@ -11,6 +11,8 @@ from django.db.models import Q, Value
 from django.conf import settings
 import os
 from registration.models import Setor
+from CreateCRM.views import converter_boolean
+from django.core.exceptions import ObjectDoesNotExist
 
 
 
@@ -93,18 +95,6 @@ def crm_detail(request, crm_id, crm_versao):
     })
 
 
-def download_files(request, path):
-    file_path = os.path.join(settings.MEDIA_ROOT, path)
-    if os.path.exists(file_path):
-        with open(file_path, 'rb') as fh:
-            response=HttpResponse(fh.read(), content_type='application/file')
-            response['Content-Disposition']='inline;filename'+os.path.basename(file_path)
-            return response
-    
-    raise Http404
-
-
-
 def busca(request):
     termo = request.GET.get("termo")
     qts_crm = Create_CRM.objects.order_by('-id').filter(
@@ -175,7 +165,6 @@ def editar_crm(request, crm_id, crm_versao):
 
 @login_required(login_url='/')
 def update_crm(request, crm_id, crm_versao):
-    
     try:
         solicitante = request.user
         data = request.POST.get("data")
@@ -185,16 +174,24 @@ def update_crm(request, crm_id, crm_versao):
         descricao = request.POST.get('descricao')
         justificativa = request.POST.get('justificativa')
         objetivo = request.POST.get('objetivo')
+        dependencia = request.POST.get('dependencia')
+        complexidade = request.POST.get('complexidade')
 
-        crm = Create_CRM.objects.create(id=crm_id, versao=crm_versao+1, solicitante=solicitante, data_criacao=data, empresa=empresa,
-        file=file, descricao=descricao, justificativa=justificativa, objetivo=objetivo)
+        dependencia_convertida = converter_boolean(dependencia)
 
+        crm = Create_CRM.objects.create(id=crm_id, versao=crm_versao+1, solicitante=solicitante, 
+                                        data_criacao=data, empresa=empresa, file=file, descricao=descricao, 
+                                        justificativa=justificativa, objetivo=objetivo, dependencia=dependencia_convertida,
+                                        complexidade_crm=complexidade)
+                                        
+        Create_CRM.objects.filter(id=crm_id, versao=crm_versao).update(status_crm='finalizadas', mostrar_crm=False)
         crm.setor.add(setores)
         crm.save()
-
+    
         return render(request, 'home.html')
 
     except :
+        
         return render(request, 'home.html')
 
 
@@ -257,7 +254,10 @@ def feedback_negativo(request, crm_id, crm_versao):
 
 def flag_ti(request, crm_id, crm_versao):
 
-    Create_CRM.objects.filter(id=crm_id, versao=crm_versao).update(status_crm='em processo')
+    try:
+        Create_CRM.objects.filter(id=crm_id, versao=crm_versao).update(status_crm='em processo')
+    except ObjectDoesNotExist:
+        return HttpResponse("CRM não encontrada para FLAG da TI.")
 
     return render(request, 'home.html')
 

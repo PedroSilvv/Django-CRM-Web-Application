@@ -33,7 +33,7 @@
     <div class="main-container-crmdetail">
         <div class='content-box-crmdetail'>
             <div class="crmdetail-title-box">
-                <h3>CRM {{crm.id}}</h3>
+                <h3>CRM {{crm.id}}   v{{crm.versao}}</h3>
             </div>
             <div class="all-details-container">
                 <div class="short-details-container">
@@ -48,8 +48,8 @@
                     </div>
 
                     <div class="short-detail">
-                        <h3>Versão CRM</h3>
-                        <h4>v{{crm.versao}}</h4>
+                        <h3>Complexidade</h3>
+                        <h4>{{crm.complexidade_crm}}</h4>
                     </div>
 
                     <div class="short-detail">
@@ -59,12 +59,9 @@
 
                     <div class="short-detail">
                         <h3>DOCs</h3>
-                        <a href='{{crm.file.re_path}}' download={{crm.file}} >{{crm.file}}</a>
-                    </div>
-
-                    <div class="short-detail">
-                        <h3>Data</h3>
-                        <h4>{{crm.data_criacao|date:'d/m/Y'}}</h4>
+                        {% if crm.file %}
+                            <a href='{{crm.file.url}}' download>{{crm.file}}</a>
+                        {%endif%}
                     </div>
 
                     <div class="short-detail">
@@ -142,7 +139,7 @@
                                     >FLAG TI</a>
                             {% endif %}
 
-                            {% if crm.solicitante == request.user  %}
+                            {% if crm.solicitante == request.user and crm.status_crm != 'finalizadas'  %}
                                 <a class='arquivar-button' 
                                     type="submit" 
                                     value='arquivar'

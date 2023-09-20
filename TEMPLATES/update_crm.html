@@ -10,67 +10,81 @@
 {% endblock 'form-action' %}
 
 {% block 'formulario' %}
-    <div class="inputs-con">
-        <div class="small-input-con">
-            <input type='text' name="solicitante" id="solicitante" class="small-input" 
-            placeholder='Solicitante' value={{crm.solicitante}}>
-        </div>
-
-        <div class="small-input-con">
-            <input type='date' name="data" id="data" class="small-input" 
-            placeholder='Data' value={{crm.data_criacao}}>
-        </div>
-
-        <div class="small-input-con">
-            <input type='text' name="empresa" id="empresa" class="small-input"
-            placeholder='Empresa' value={{crm.empresa}}>
-        </div>
-
-        <div class="small-input-con">
-            <input type='text' name="versao" id="versao" class="small-input"
-            placeholder='Versão CRM (campo automatico)' value={{crm.versao}}>
-        </div>
-
-        <div class="small-input-con">
-            <input type='file' name="upload" id="upload" class="small-input" multiple="multiple">
-        </div>
-
-        <div class="small-input-con">
-            <select name='setores' id="setores" multiple="multiple" value={{crm_setores}}>
-                {%for setor in all_setores%}
-                    <option value={{setor.id}}>{{setor.nome}}</option>
-                {%endfor%}
-            </select>
-        </div>
-
-        <div class="tall-input-con">
-            <textarea type='text' name="descricao" id="descricao" placeholder="Descrição" value={{crm.descricao}}></textarea>
-        </div>
-
-        <div class="tall-input-con">
-            <textarea type='text' name="justificativa" id="justificativa" placeholder="Justificativa" value={{crm.justificativa}}> </textarea>
-        </div>
-
-        <div class="tall-input-con">
-            <textarea type='text' name="objetivo" id="objetivo" placeholder="Objetivo" value={{crm.objetivo}}></textarea>
-        </div>
+<div class="inputs-con">
+    <div class="small-input-con">
+        <input type='text' name="solicitante" id="solicitante"
+        placeholder='Solicitante' class="small-input" value='{{crm.solicitante}}' readonly>
         
-
-        <div class='org-div'>
-            <div class="crm-dependence-check-box">
-                <h3>Essa CRM depende de outro desenvolvimento?</h3>
-                <br>
-
-                <input type="radio" name="sim" id="dependence-button-sim" placeholder="Sim">
-                <label for="button1">Sim</label>
-                
-                <input type="radio" name="não" id="dependence-button-nao" placeholder="Não">
-                <label for="button2">Não</label>
-            </div>
-            <div class="solicitation-button">
-                <button class="form-button" type="submit" id="editar-button">Editar</button>
-            </div>
-        <div/>
     </div>
+
+    <div class="small-input-con">
+        <input type='text' name="empresa" id="empresa"
+        placeholder='Empresa' value='{{crm.empresa}}' class="small-input">
+    
+    </div>
+
+
+
+    <div class="small-input-con">
+        <input type='file' name="upload" id="upload" class="small-input" 
+        placeholder='Arquivos' multiple="multiple">
+        
+    </div>
+
+    
+    <select name='setores' id="setores" multiple="multiple" class='select-setores'>
+        {%for setor in setores%}
+            <option value={{setor.id}}>{{setor.nome}}</option>
+        {%endfor%}
+    </select>
+    
+
+    <div class="tall-input-con">
+        <textarea type='text' name="descricao" id="descricao" placeholder="Descrição" >{{crm.descricao}}</textarea>
+    </div>
+
+    <div class="tall-input-con">
+        <textarea type='text' name="justificativa" id="justificativa" placeholder="Justificativa">{{crm.justificativa}} </textarea>
+    </div>
+
+    <div class="tall-input-con">
+        <textarea type='text' name="objetivo" id="objetivo" placeholder="Objetivo">{{crm.objetivo}}</textarea>
+    </div>
+    
+
+    <div class='organiza'>
+        <div class="crm-dependence-check-box">
+            <h3>Essa CRM depende de outro desenvolvimento?</h3>
+            <br>
+
+            <input type="radio" name="dependencia" id="dependence-button-sim" placeholder="Sim" value='True'>
+            <label for="button1">Sim</label>
+            
+            <input type="radio" name="dependencia" id="dependence-button-nao" placeholder="Não" value='False'>
+            <label for="button2">Não</label>
+        </div>
+
+        <div class="crm-dependence-check-box">
+            <h3>Grau de Complexidade</h3>
+            <br>
+
+            <input type="radio" name="complexidade" id="dependence-button-sim"  value='Alta'>
+            <label for="button1">Alto</label>
+            
+            <input type="radio" name="complexidade" id="dependence-button-nao"  value='Media'>
+            <label for="button2">Médio</label>
+
+            <input type="radio" name="complexidade" id="dependence-button-nao"  value='Baixa'>
+            <label for="button2">Baixo</label>
+        </div>
+
+    </div>
+
+    
+    <div class="solicitation-button">
+        <button class="form-button" type="submit" id="solict-button">Editar</button>
+    </div>
+    
+</div>
 
 {% endblock 'formulario' %}

@@ -1,0 +1,38 @@
+/* Estilo padrão para o elemento select */
+.select-setores {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  font-size: 16px;
+  color: #333;
+}
+
+/* Estilo para a seta do dropdown (ícone de seta para baixo) */
+.select-setores::-ms-expand {
+  display: none;
+}
+
+.select-setores:after {
+  content: '\f0d7'; /* Código unicode do ícone de seta para baixo (Font Awesome) */
+  font-family: 'Font Awesome'; /* Use a fonte Font Awesome para o ícone */
+  font-size: 14px;
+  color: #555;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none; /* Impede que o ícone seja clicado */
+}
+
+/* Estilo para os options no menu dropdown */
+.select-setores option {
+  padding: 5px 10px;
+}
+
+/* Estilo quando o option estiver selecionado */
+.select-setores option:checked {
+  background-color: #e1f3fc;
+  color: #007bff;
+}

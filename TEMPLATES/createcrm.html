@@ -43,14 +43,8 @@
                         <div class="inputs-con">
                             <div class="small-input-con">
                                 <input type='text' name="solicitante" id="solicitante"
-                                placeholder='Solicitante' class="small-input">
+                                placeholder='Solicitante' class="small-input" value='{{solicitante}}' readonly>
                                 
-                            </div>
-
-                            <div class="small-input-con">
-                                <input type='date' name="data" id="data"
-                                placeholder='Data' class="small-input">
-                            
                             </div>
 
                             <div class="small-input-con">
@@ -59,11 +53,7 @@
                             
                             </div>
 
-                            <div class="small-input-con">
-                                <input type='number' name="versao" id="versao" 
-                                placeholder='Versão (Campo Automatico)' value=1 class="small-input">
-                    
-                            </div>
+            
 
                             <div class="small-input-con">
                                 <input type='file' name="upload" id="upload" class="small-input" 
@@ -71,15 +61,13 @@
                                 
                             </div>
 
-                            <div class="small-input-con">
-                                <select name='setores' id="setores" multiple="multiple" class='select-setores'>
-                                    {%for setor in setores%}
-                                        <option value={{setor.id}}>{{setor.nome}}</option>
-                                    {%endfor%}
-                                </select>
-                                    
-
-                            </div>
+                            
+                            <select name='setores' id="setores" multiple="multiple" class='select-setores'>
+                                {%for setor in setores%}
+                                    <option value={{setor.id}}>{{setor.nome}}</option>
+                                {%endfor%}
+                            </select>
+                            
 
                             <div class="tall-input-con">
                                 <textarea type='text' name="descricao" id="descricao" placeholder="Descrição"></textarea>
@@ -94,21 +82,39 @@
                             </div>
                             
 
-                            <div class='org-div'>
+                            <div class='organiza'>
                                 <div class="crm-dependence-check-box">
                                     <h3>Essa CRM depende de outro desenvolvimento?</h3>
                                     <br>
                         
-                                    <input type="radio" name="sim" id="dependence-button-sim" placeholder="Sim">
+                                    <input type="radio" name="dependencia" id="dependence-button-sim" placeholder="Sim" value='True'>
                                     <label for="button1">Sim</label>
                                     
-                                    <input type="radio" name="não" id="dependence-button-nao" placeholder="Não">
+                                    <input type="radio" name="dependencia" id="dependence-button-nao" placeholder="Não" value='False'>
                                     <label for="button2">Não</label>
                                 </div>
-                                <div class="solicitation-button">
-                                    <button class="form-button" type="submit" id="solict-button">Solicitar</button>
+
+                                <div class="crm-dependence-check-box">
+                                    <h3>Grau de Complexidade</h3>
+                                    <br>
+                        
+                                    <input type="radio" name="complexidade" id="dependence-button-sim"  value='Alta'>
+                                    <label for="button1">Alto</label>
+                                    
+                                    <input type="radio" name="complexidade" id="dependence-button-nao"  value='Media'>
+                                    <label for="button2">Médio</label>
+
+                                    <input type="radio" name="complexidade" id="dependence-button-nao"  value='Baixa'>
+                                    <label for="button2">Baixo</label>
                                 </div>
-                            <div/>
+
+                            </div>
+
+                            
+                            <div class="solicitation-button">
+                                <button class="form-button" type="submit" id="solict-button">Solicitar</button>
+                            </div>
+                            
                         </div>
                     {% endblock 'formulario' %}
                 </fieldset>
